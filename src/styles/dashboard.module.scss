@@ -1,0 +1,33 @@
+.container {    
+    max-width: 1100px;
+    min-height: calc(100vh - 15rem);
+    margin: 0 auto;
+}
+
+.contentPokeballList{
+    width: 100%;
+    overflow: hidden;
+    
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 2rem;
+    padding: 1rem 0;
+}
+
+@media(max-width: 720px){
+
+    .container{
+        display: grid;
+        
+        .contentPokeballList{
+            width: 80%;
+            overflow: scroll;
+            margin: 1rem auto;
+            
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            padding: 1rem 0;
+        }
+    }
+}

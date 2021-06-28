@@ -1,0 +1,113 @@
+.container{
+    position: absolute;
+
+    .content{
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+        height: 100%;
+        
+        > img{
+            width: 12rem;
+        }
+        
+        .data{
+            margin: 0.5rem 1rem;
+
+            > span{
+                float: right;
+                text-align: right;
+                color: gray;
+                width: 100%;
+                margin-bottom: 0.5rem;
+            }
+
+            h2{
+                font-size: 1.125rem;
+                font-weight: 400;
+                margin: 1rem 0rem;
+            }
+    
+            p{
+                font-size: 1rem;
+                font-weight: 400;
+            }
+        
+            .answer{
+                display: flex;
+                flex-direction: column;
+                margin: 0.5rem 2rem;
+                  
+                span{
+                    padding: 0.25rem 0;
+                    
+                    label, input{
+                        cursor: url("/arrow.png"), default;
+                        padding: 0.25rem 0;
+                    }
+                    
+                    label{
+                        display: inline-block;
+                        margin-left: 5px;
+                        font-size: 1rem;
+                        font-weight: 300;
+                        min-width: 2rem;
+                        z-index: 10;
+                    }
+                }
+
+                .correct{
+                    span{
+                        background: green;
+                    }
+                }
+            }
+        }       
+
+        button {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            background-color: #396bba;
+            color: #fee031;
+
+            width: 50%;
+            cursor: url("/click.png"), default;
+            // height: 4rem;
+            
+            border: none;
+            border-radius: 0.125rem;
+            overflow: hidden;
+            
+            padding: 0.25rem;
+
+            &:active{
+                filter: brightness(0.7);
+            }
+            
+            img{
+                height: 3rem;
+                width: 3rem;
+            }
+
+            span{
+                font-size: 1.5rem;
+                margin: 0.5rem;
+                font-weight: 600;                
+            }
+        }
+
+        button:hover{
+            background-color: #fee031;
+            color: #396bba;
+        }
+
+        button:disabled{
+            filter: brightness(0.4);
+            pointer-events: none;
+        }
+    }
+}
+

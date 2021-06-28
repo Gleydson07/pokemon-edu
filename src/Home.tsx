@@ -1,14 +1,23 @@
 // import { useState } from "react";
-import styles from './styles/home.module.scss';
-
-import logoImg from './assets/logo.png'
+import { useHistory } from 'react-router-dom';
 import { useAuth } from './components/hooks/useAuth';
 
+import logoImg from './assets/logo.png'
+import styles from './styles/home.module.scss';
+import { useEffect } from 'react';
+
 export function Home(){
-    const { googleSignIn } = useAuth();
+    const { googleSignIn, user } = useAuth();
+    const history = useHistory();
+
+    useEffect(() => {
+        if(user){
+            history.push('/dashboard')
+        }
+    },[user])
 
     async function handleLogin(){
-        googleSignIn()
+        googleSignIn();
     }
 
     return (

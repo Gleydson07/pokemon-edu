@@ -1,23 +1,26 @@
 import { createContext, ReactNode, useContext, useEffect, useState } from "react";
-import { User, UserAuth } from "../../assets/types";
-
 import {firebase, auth, database} from '../../services/firebase'
+import { useHistory } from 'react-router-dom';
+
+import { User } from "../../assets/types";
 
 type AuthProviderProps = {
     children: ReactNode
 }
 
 interface AuthContextData {
+    user: User | undefined;
     googleSignIn: () =>  Promise<void>;
 }
 
 export const AuthContext = createContext({} as AuthContextData);
 
 export const AuthProvider = ({children}: AuthProviderProps) => {
-    const [user, setUser] = useState<User | null>();
+    const [user, setUser] = useState<User>();
+    const history = useHistory();
 
     useEffect(() => {
-        console.log(user)
+
     }, [user])
 
     async function googleSignIn(){
@@ -27,12 +30,24 @@ export const AuthProvider = ({children}: AuthProviderProps) => {
         if(result.user){
             const {displayName, photoURL, uid} = result.user;
             
+            if(!displayName || !photoURL){
+                throw new Error("Missing user data on authentication")
+            }
+
+            const splitedName = displayName.split(" ");
+            let name = "";
+            if(splitedName[1].length < 3) {
+                name = (splitedName[0].concat(" ", splitedName[1], " ", splitedName[2]))
+            }else{
+                name = (splitedName[0].concat(" ", splitedName[1]))
+            }
+            
             const dataFromFirebase = await database.ref(`users/${uid}`).once('value', (data) => data.val())
 
             if(dataFromFirebase.val()){
                 setUser({
                     id: uid,
-                    name: displayName,
+                    name,
                     avatar: photoURL,
                     life:  dataFromFirebase.val().life,
                     points:  dataFromFirebase.val().points
@@ -40,7 +55,7 @@ export const AuthProvider = ({children}: AuthProviderProps) => {
             }else{
                 const userData: User = {
                     id: uid, 
-                    name: displayName,
+                    name,
                     avatar: photoURL,
                     points: 0, 
                     life: 5
@@ -51,8 +66,15 @@ export const AuthProvider = ({children}: AuthProviderProps) => {
         }
     }
 
+    async function googleSignOut(){
+        setUser(undefined)
+        await firebase.auth().signOut();        
+        history.push('/')
+    }
+
     return (
         <AuthContext.Provider value={{
+            user,
             googleSignIn
         }}>
             {children}
