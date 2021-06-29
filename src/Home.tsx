@@ -7,8 +7,8 @@ import styles from './styles/home.module.scss';
 import { useEffect } from 'react';
 
 export function Home(){
-    const { googleSignIn, user } = useAuth();
     const history = useHistory();
+    const { googleSignIn, user } = useAuth();
 
     useEffect(() => {
         if(user){

@@ -1,6 +1,4 @@
-import React, { useEffect, useState } from 'react';
-
-import { Heart } from './Heart';
+// import { Heart } from './Heart';
 import { useAuth } from '../components/hooks/useAuth';
 import styles from '../styles/header.module.scss';
 

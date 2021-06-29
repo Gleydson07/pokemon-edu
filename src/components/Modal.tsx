@@ -1,6 +1,6 @@
 import React, { FormEvent, useEffect, useState } from 'react';
 
-import Rodal from 'rodal';
+// import Rodal from 'rodal';
 import 'rodal/lib/rodal.css';
 import { Option, Pokemon, Question } from '../assets/types';
 import { usePokemon } from '../components/hooks/usePokemon';
@@ -19,8 +19,8 @@ export function Modal({visible = false, onClose, pokemon}: IModalProps){
 
     const [answer, setAnswer] = useState<string | null>();
     const [isVisibleAlert, setIsVisibleAlert] = useState(false);
-    const {id, points, fase, matter, matterShow, activities} = pokemon.question;
-
+    // const {id, points, fase, matter, matterShow, activities} = pokemon.question;
+ 
     function handleOpenAlert(){
         setIsVisibleAlert(true);
     }
@@ -29,13 +29,13 @@ export function Modal({visible = false, onClose, pokemon}: IModalProps){
         setIsVisibleAlert(false);
     }
 
-    function handleChange(e){
-        setAnswer(e.target.value);
-    }
+    // function handleChange(e){
+    //     setAnswer(e.target.value);
+    // }
     
     function handleSubmit(event: FormEvent){
         event.preventDefault();
-        handleUserAnswer(answer, pokemon);
+        // handleUserAnswer(answer, pokemon);
         
         answer ? (
             onClose()
@@ -48,7 +48,7 @@ export function Modal({visible = false, onClose, pokemon}: IModalProps){
     return (
         <>
             <div className={styles?.container}>
-                <Rodal 
+                {/* <Rodal 
                     visible={visible} 
                     onClose={onClose} 
                     width={500}
@@ -82,7 +82,7 @@ export function Modal({visible = false, onClose, pokemon}: IModalProps){
                             <img src="./pikachu.gif" alt="Responder" />
                         </button>
                     </form>
-                </Rodal>        
+                </Rodal>         */}
             </div>
 
             <Alert 

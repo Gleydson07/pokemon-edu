@@ -1,5 +1,4 @@
-import { useEffect, useState, Suspense } from "react";
-import axios from "axios";
+import { Suspense } from "react";
 
 import { Card } from "./components/Card";
 import { Header } from "./components/Header";
@@ -7,7 +6,8 @@ import { Header } from "./components/Header";
 import { usePokemon } from "./components/hooks/usePokemon";
 import { Pokemon } from "./assets/types";
 
-import styles from './styles/card.module.scss'
+import styles from './styles/dashboard.module.scss'
+import { CustomModal } from "./components/CustomModal";
 
 export default function Dashboard() {
   const { pokemons } = usePokemon();
@@ -26,6 +26,16 @@ export default function Dashboard() {
 
             </div>  
         </div>
+
+        <CustomModal visible={true}>
+            {<div className={styles.form}>
+                <form action="">
+                    <input type="text" placeholder="name" />
+                    <input type="text" placeholder="password" />
+                    <input type="text" placeholder="image" />
+                </form>
+            </div>}
+        </CustomModal>
     </>
   )
 }
