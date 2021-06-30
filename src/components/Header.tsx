@@ -1,4 +1,4 @@
-// import { Heart } from './Heart';
+import { Heart } from './Heart';
 import { useAuth } from '../components/hooks/useAuth';
 import styles from '../styles/header.module.scss';
 
@@ -19,7 +19,7 @@ export function Header(){
                     </div>
                 </div>
                 <div className={styles?.life}>
-                    {/* <Heart/> */}
+                    <Heart/>
                 </div>
             </div>
         </header>

@@ -1,123 +1,89 @@
-// import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
-// import { usePokemon } from '../components/hooks/usePokemon';
-// import { useAuth } from '../components/hooks/useAuth';
+import { QuestionModal } from '../components/Modals/QuestionModal';
 
-// import {Modal} from '../Modal/index';
-// import {ValidationResponse} from '../Modal/ValidationResponse/index'
-// import {Alert} from '../Modal/Alert/index'
+import { RiHeart3Fill, RiSwordFill, RiShieldFill } from 'react-icons/ri'
+import { FcCancel } from 'react-icons/fc'
+import { CgPokemon } from 'react-icons/cg'
+
+import pokeballImg from '../assets/pokeball.png';
+import bgPokeballImg from '../assets/bgpokeball.png';
+import matematicImg from '../assets/matematic.png';
+import portugueseImg from '../assets/portuguese.png';
 
 import { Pokemon } from '../assets/types';
-// import styles from '../styles/card.module.scss'
-
-// import { RiHeart3Fill, RiSwordFill, RiShieldFill } from 'react-icons/ri'
-// import { FcCancel } from 'react-icons/fc'
-// import { CgPokemon } from 'react-icons/cg'
+import styles from '../styles/card.module.scss'
 
 type PokemonData = {
-    dataPokemon: Pokemon
+    pokemon: Pokemon
 }
 
-export function Card({dataPokemon}:PokemonData){
-    // const {pokemonCard} = usePokemon();
-    // const {user} = useAuth();
+export function Card({pokemon}:PokemonData){
+    const [ matterImg, setMatterImg ] = useState('');
+    const [ openModalQuestion, setOpenModalQuestion ] = useState(false);
+    const {id, name, image, type, hp, attack, defense, question} = pokemon;
 
-    // const [winnerChallenge, setWinnerChallenge] = useState(false);
+    useEffect(() => {        
+        setMatterImg(
+            pokemon?.question?.matter === "portuguese" ?
+                portugueseImg
+            :
+                matematicImg
+        )
+    }, [])
 
-    // const [showDefaultPokemon, setShowDefaultPokemon] = useState(false);
-    // const [showInfoPokemon, setShowInfoPokemon] = useState(true);
-
-    // const [isVisibleModal, setIsVisibleModal] = useState(false);
-    // const [isVisibleResult, setIsVisibleResult] = useState(false);
-    // const [isVisibleAlert, setIsVisibleAlert] = useState(false);
-
-    // useEffect(() => {
-    //     if(dataPokemon.id === pokemonCard?.id){
-    //         handleOpenResult();
-    //         setTimeout(() => (
-    //             setWinnerChallenge((dataPokemon.id === pokemonCard?.id) && !pokemonCard.isCorrect),
-    //             setShowDefaultPokemon(true),
-    //             handleCloseResult()
-    //         ),2500)
-    //     }
-    // }, [pokemonCard])
-
-    // function handleShowModal(){
-    //     !!user?.life ? (
-    //         setIsVisibleModal(true)
-    //     ) : (
-    //         setIsVisibleAlert(true)
-    //     );
-    // }
-
-    // function handleHideModal(){
-    //     setIsVisibleModal(false)
-    // }
-
-    // function handleOpenResult(){
-    //     setIsVisibleResult(true);
-    // }
-
-    // function handleCloseResult(){
-    //     setIsVisibleResult(false);
-    // }
-
-    // function handleOpenAlert(){
-    //     setIsVisibleAlert(true);
-    // }
-
-    // function handleCloseAlert(){
-    //     setIsVisibleAlert(false);
-    // }
+    function handleOpenModalQuestion(){
+        setOpenModalQuestion(true);
+    }
 
     return (
-        <>
-            {/* <section className={`${styles.container} 
+        <div>
+            <section className={`${styles.container} 
                 ${styles.middle} 
-                ${showDefaultPokemon && styles.showBack}
+                // conditional to class call styles.showBack
                 `}
             >  
                 <div 
                     className={`
                         ${styles.back}
                     `}  
-                    onMouseEnter={() => setShowInfoPokemon(true)}
-                    onMouseLeave={() => setShowInfoPokemon(false)} 
+                    // onMouseEnter={} show info into pokeball
+                    // onMouseLeave={} hidden info on pokeball
                 >
                     <div className={`${styles.backContentDefault} 
-                        ${showInfoPokemon && styles.hidden}
+                        // conditional to class call styles.hidden
                     `}>
-                        <img src="/bgpokeball.png" alt="background" />
+                        <img src={bgPokeballImg} alt="background" />
                         <div className={styles.backContent}>
-                            {winnerChallenge && <FcCancel/>}
-                            <img src={dataPokemon.image} alt={dataPokemon.name} />
-                            <h1>{dataPokemon.name}</h1>
+                            {/* conditional if the user makes a mistake  {winnerChallenge && <FcCancel/>} */}
+                            <img src={image} alt={name} />
+                            <h1>{name}</h1>
                         </div>
                     </div>
 
                     <div className={`${styles.backContentDetails} `}>
-                        <img src={dataPokemon.image} alt={dataPokemon.name} />
-                        <h1>{dataPokemon.name}</h1>
+                        <img src={image} alt={name} />
+                        <h1>{name}</h1>
                         <div>
                             <div className={styles.stats}>
                                 <div>
                                     <RiHeart3Fill/>
-                                    <strong>{dataPokemon.hp}</strong>
+                                    <strong>{hp}</strong>
                                 </div>
                                 <div>
                                     <RiSwordFill/>
-                                    <strong>{dataPokemon.attack}</strong>
+                                    <strong>{attack}</strong>
                                 </div>
                                 <div>
                                     <RiShieldFill/>
-                                    <strong>{dataPokemon.defense}</strong>
+                                    <strong>{defense}</strong>
                                 </div>
                             </div>
 
                             <div className={styles.stats}>
                                 <div>
                                     <CgPokemon/>
-                                    <strong>{dataPokemon.type}</strong>
+                                    <strong>{type}</strong>
                                 </div>
                             </div>
                         </div>
@@ -125,33 +91,43 @@ export function Card({dataPokemon}:PokemonData){
                 </div>
                 
                 <div className={styles.front}
-                    onClick={handleShowModal}  
+                    onClick={handleOpenModalQuestion}
                 >
-                    <img src="/pokeball.png" alt="pokeball" />
+                    <img src={pokeballImg} alt="pokeball" />
                 </div>
 
-            </section> */}
+            </section>
 
-            {/* <Modal 
-                visible={isVisibleModal} 
-                onClose={handleHideModal} 
-                pokemon={dataPokemon}
-            />
+            <QuestionModal isVisible={true}>
+                {console.log('chamou o modal: '+openModalQuestion)}
+                <form className={styles?.content} >
+                    <img src={matterImg} alt={question?.matterShow}/>
+                    <div className={styles.data}>
+                        <span>{question?.points} pontos</span>
+                        <h2>{question?.activities?.enunciation}</h2>
+                        <p>{question?.activities?.question}</p>
 
-            <ValidationResponse 
-                visible={isVisibleResult}
-                onCloseResult={handleCloseResult}
-                points={dataPokemon?.question?.points}
-                status={showPokemonCard?.answerIsCorrect}
-            />
+                        <div 
+                            className={styles.answer}
+                            // onChange={handleChange}
+                        >
+                            {question?.activities?.options.map(response => (
+                                <span key={response.option}>
+                                    <input type="radio" id={response.option} name="quest" value={response.option} />
+                                    <label htmlFor={response.option}>{response.option}</label>
+                                </span>
+                            ))}
+                        </div>
+                    </div>
 
-            <Alert 
-                visible={isVisibleAlert}
-                onClose={handleCloseAlert}
-                message="Você não possui vidas para continuar!"
-                warning="Aguarde 30 minutos para ganhar uma vida extra"
-            /> */}
-        </>
+                    <button type="submit">
+                        <span>Responder</span>
+                        <img src="./pikachu.gif" alt="Responder" />
+                    </button>
+                </form>
+            </QuestionModal>
+
+        </div>
         
     )
 }
