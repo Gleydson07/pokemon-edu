@@ -1,5 +1,8 @@
 .container{
     position: absolute;
+    padding: 2rem;
+    height:100%;
+    width: 100%;
 
     .content{
         display: flex;
@@ -9,7 +12,7 @@
         height: 100%;
         
         > img{
-            width: 12rem;
+            width: 16rem;
         }
         
         .data{
@@ -43,7 +46,7 @@
                     padding: 0.25rem 0;
                     
                     label, input{
-                        cursor: url("/arrow.png"), default;
+                        cursor: url("../assets/arrow.png"), default;
                         padding: 0.25rem 0;
                     }
                     
@@ -74,7 +77,7 @@
             color: #fee031;
 
             width: 50%;
-            cursor: url("/click.png"), default;
+            cursor: url("../assets/arrow.png"), default;
             // height: 4rem;
             
             border: none;

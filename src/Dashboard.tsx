@@ -2,7 +2,6 @@ import { Suspense } from "react";
 
 import { Card } from "./components/Card";
 import { Header } from "./components/Header";
-import { QuestionModal } from "./components/Modals/QuestionModal";
 
 import { usePokemon } from "./components/hooks/usePokemon";
 import { Pokemon } from "./assets/types";
@@ -25,10 +24,6 @@ export default function Dashboard() {
 
             </div>  
         </div>
-
-        <QuestionModal isVisible={false}>
-
-        </QuestionModal>
     </>
   )
 }
