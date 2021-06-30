@@ -1,14 +1,14 @@
 
-import { useEffect, useState } from 'react';
-import { AiFillHeart, AiOutlineHeart } from 'react-icons/ai';
+// import { useEffect, useState } from 'react';
+// import { AiFillHeart, AiOutlineHeart } from 'react-icons/ai';
 
 import styles from '../styles/heart.module.scss'
 
 export function Heart() {
-    const [heartList, setHeartList] = useState([]);
+    // const [heartList, setHeartList] = useState([]);
 
-    function list(){
-        let count = 0;
+    // function list(){
+        // let count = 0;
         // let heartArray = [];
         // while(count < 5){
         //     user.life > count ? (
@@ -28,11 +28,11 @@ export function Heart() {
         //     count++;
         // }
         // setHeartList(heartArray)
-    }
+    // }
 
     return (
         <div className={styles.container}>
-            {heartList}
+            {/* {heartList} */}
         </div>
     )
 }

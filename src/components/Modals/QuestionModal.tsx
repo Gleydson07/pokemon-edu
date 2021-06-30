@@ -1,11 +1,13 @@
 import { useEffect, useState } from 'react';
 import Modal from 'react-modal';
-import { Question } from '../../assets/types';
+
+import { useQuestion } from '../hooks/useQuestion'
 
 import matematicImg from '../../assets/matematic.png';
-import pikachuImg from '../../assets/pikachu.gif';
 import portugueseImg from '../../assets/portuguese.png';
-import styles from '../../styles/modal.module.scss'
+import pikachuImg from '../../assets/pikachu.gif';
+import styles from '../../styles/modal.module.scss';
+import { Question } from '../../assets/types';
 
 interface IQuestionModalProps{
     isVisible: boolean;
@@ -13,6 +15,7 @@ interface IQuestionModalProps{
 }
 
 const customStyles = {
+    zIndex: 1,
     overlay:{
         background: "#00000099",
     },
@@ -28,12 +31,14 @@ const customStyles = {
     },
 };
 
-Modal.setAppElement("#root");
+Modal.setAppElement('#root');
 
 export function QuestionModal({isVisible = false, question}: IQuestionModalProps){
     const [modalIsOpen, setModalIsOpen] = useState(false);
 
-    useEffect(() => {setModalIsOpen(isVisible)}, [isVisible])
+    useEffect(() => {
+        question && setModalIsOpen(isVisible);
+    }, [isVisible])
 
     function closeModal(){
         setModalIsOpen(false);
@@ -43,8 +48,12 @@ export function QuestionModal({isVisible = false, question}: IQuestionModalProps
         <Modal
             isOpen={modalIsOpen}
             onRequestClose={closeModal}
+            shouldCloseOnOverlayClick={false}
+            shouldCloseOnEsc={false}
             style={customStyles}
         >
+            {/* {console.log('question modal: ')} */}
+            {/* {console.log(question)} */}
             <div className={styles.container}>
             <form className={styles.content} >
                     <img src={question?.matter === "portuguese" ? 

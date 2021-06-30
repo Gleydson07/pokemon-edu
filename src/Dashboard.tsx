@@ -11,9 +11,10 @@ import styles from './styles/dashboard.module.scss'
 export default function Dashboard() {
   const { pokemons } = usePokemon();
   return (
-    <>
+    <div>
         <Header/>
-        <div className={styles.container}>
+        {console.log(pokemons)}
+        <div className={styles.container} >
             <div className={styles.contentPokeballList} >
 
                 <Suspense fallback={<div>Loading...</div>}>                    
@@ -24,6 +25,6 @@ export default function Dashboard() {
 
             </div>  
         </div>
-    </>
+    </div>
   )
 }

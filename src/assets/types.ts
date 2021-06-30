@@ -41,7 +41,6 @@ export type Pokemon = {
     hp: number;
     attack: number;
     defense: number;
-    question: Question;
 }
 
 ///           USER           ///

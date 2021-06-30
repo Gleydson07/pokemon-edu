@@ -15,41 +15,31 @@ interface PokemonContextData {
 export const PokemonContext = createContext({} as PokemonContextData);
 
 export const PokemonProvider = ({children}:PokemonProvidersProps) => {
-    const [questions, setQuestions] = useState([] as Question[]);
-    const [pokemons, setPokemons] = useState([] as Pokemon[]);
+    const [pokemons, setPokemons] = useState<Pokemon[]>([]);
 
-    useEffect(() => {        
-        loadQuestionsList();
-        loadPokemonsList();
+    useEffect(() => { 
+        loadPokemonList();
     }, [])
 
-    function loadQuestionsList(){
-        database.ref(`lessons`).on('value', (lesson) => {
-            setQuestions(shuffle(lesson.val()))
-        })
-    }
-
-    async function loadPokemonsList(){
-        
+    async function loadPokemonList(){
         let list = [] as Pokemon[];
-        for(let count = 0; count < 50; count++ ){
-            await axios.get(`https://pokeapi.co/api/v2/pokemon/${count+1}/`)
-            .then(response => response.data)
-            .then(data => {
-                list.push({                       
-                    id: data.id,
-                    name: data.name,
-                    image: data.sprites.other['dream_world']['front_default'],
-                    type: data.types[0].type.name,
-                    weight: data.weight,
-                    hp: data.stats[0]['base_stat'],
-                    attack: data.stats[1]['base_stat'],
-                    defense: data.stats[2]['base_stat'],
-                    question: questions && questions[count+1]
+            for(let count = 0; count < 30; count++ ){
+                await axios.get(`https://pokeapi.co/api/v2/pokemon/${count+1}/`)
+                .then(response => response.data)
+                .then(data => {
+                    list.push({                       
+                        id: data.id,
+                        name: data.name,
+                        image: data.sprites.other['dream_world']['front_default'],
+                        type: data.types[0].type.name,
+                        weight: data.weight,
+                        hp: data.stats[0]['base_stat'],
+                        attack: data.stats[1]['base_stat'],
+                        defense: data.stats[2]['base_stat'],
                 })
-            })             
+            })
         }
-        setPokemons(shuffle(list).slice(0, 15))
+        setPokemons(shuffle(list).slice(0, 15));        
     }
 
     function shuffle(array: Array<any>) {

@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 import { QuestionModal } from '../components/Modals/QuestionModal';
 
@@ -11,18 +11,26 @@ import bgPokeballImg from '../assets/bgpokeball.png';
 
 import { Pokemon } from '../assets/types';
 import styles from '../styles/card.module.scss'
+import { useQuestion } from './hooks/useQuestion';
+import { setTimeout } from 'timers';
 
 type PokemonData = {
     pokemon: Pokemon;
 }
 
 export function Card({pokemon}:PokemonData){
-    const { name, image, type, hp, attack, defense, question } = pokemon;
+    const { id, name, image, type, hp, attack, defense } = pokemon;
+    const { getQuestionById, question } = useQuestion();
     const [ openModalQuestion, setOpenModalQuestion ] = useState(false);
     
     function handleOpenModalQuestion(){
-        setOpenModalQuestion(true);
+        getQuestionById(id-1);
+        setTimeout(
+            () => setOpenModalQuestion(true),
+        250)
     }
+
+    
 
     return (
         <>

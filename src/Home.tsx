@@ -11,9 +11,7 @@ export function Home(){
     const { googleSignIn, user } = useAuth();
 
     useEffect(() => {
-        if(user){
-            history.push('/dashboard')
-        }
+        !!user && history.push('/dashboard')    
     },[user])
 
     async function handleLogin(){
