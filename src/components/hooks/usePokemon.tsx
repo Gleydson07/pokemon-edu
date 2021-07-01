@@ -1,8 +1,7 @@
 import axios from "axios";
 import { createContext, useContext, useEffect, useState, ReactNode } from "react";
 
-import { Pokemon, Question } from '../../assets/types'
-import { database } from "../../services/firebase";
+import { Pokemon } from '../../assets/types'
 
 type PokemonProvidersProps = {
     children: ReactNode;
@@ -19,11 +18,12 @@ export const PokemonProvider = ({children}:PokemonProvidersProps) => {
 
     useEffect(() => { 
         loadPokemonList();
+        console.log('teste')
     }, [])
 
     async function loadPokemonList(){
         let list = [] as Pokemon[];
-            for(let count = 0; count < 30; count++ ){
+            for(let count = 0; count < 30; count++){
                 await axios.get(`https://pokeapi.co/api/v2/pokemon/${count+1}/`)
                 .then(response => response.data)
                 .then(data => {
@@ -35,7 +35,7 @@ export const PokemonProvider = ({children}:PokemonProvidersProps) => {
                         weight: data.weight,
                         hp: data.stats[0]['base_stat'],
                         attack: data.stats[1]['base_stat'],
-                        defense: data.stats[2]['base_stat'],
+                        defense: data.stats[2]['base_stat']
                 })
             })
         }

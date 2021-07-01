@@ -2,6 +2,7 @@ import { createContext, ReactNode, useContext, useEffect, useState } from "react
 import {firebase, auth, database} from '../../services/firebase';
 
 import { User } from "../../assets/types";
+import { useHistory } from "react-router-dom";
 
 type AuthProviderProps = {
     children: ReactNode
@@ -18,6 +19,7 @@ export const AuthContext = createContext({} as AuthContextData);
 
 export const AuthProvider = ({children}: AuthProviderProps) => {
     const [user, setUser] = useState<User>();
+    const history = useHistory();
 
     useEffect(() => {
         const unsubscribe = auth.onAuthStateChanged(user => {
@@ -32,7 +34,9 @@ export const AuthProvider = ({children}: AuthProviderProps) => {
         return () => {
             unsubscribe();
         }
-    }, [user])
+    }, [])
+
+    useEffect(() => {}, [user])
 
     async function updateGamePointsOfUser(points: number, isCorrect:boolean){
         if(user){
@@ -70,8 +74,9 @@ export const AuthProvider = ({children}: AuthProviderProps) => {
     }
 
     async function googleSignOut(){
-        setUser(undefined)
+        setUser(undefined);
         await firebase.auth().signOut();
+        history.push('/');
     }
 
     async function getUser(uid: string, photoURL: string, displayName: string){

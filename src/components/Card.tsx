@@ -1,17 +1,18 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
+
+import { useAuth } from './hooks/useAuth';
+import { useQuestion } from './hooks/useQuestion';
 
 import { QuestionModal } from '../components/Modals/QuestionModal';
-
-import { RiHeart3Fill, RiSwordFill, RiShieldFill } from 'react-icons/ri'
 // import { FcCancel } from 'react-icons/fc'
-import { CgPokemon } from 'react-icons/cg'
 
+import { Pokemon } from '../assets/types';
+import { RiHeart3Fill, RiSwordFill, RiShieldFill } from 'react-icons/ri'
+import { CgPokemon } from 'react-icons/cg'
 import pokeballImg from '../assets/pokeball.png';
 import bgPokeballImg from '../assets/bgpokeball.png';
 
-import { Pokemon } from '../assets/types';
 import styles from '../styles/card.module.scss'
-import { useQuestion } from './hooks/useQuestion';
 import { setTimeout } from 'timers';
 
 type PokemonData = {
@@ -19,30 +20,28 @@ type PokemonData = {
 }
 
 export function Card({pokemon}:PokemonData){
+    const { user } = useAuth();
     const { id, name, image, type, hp, attack, defense } = pokemon;
     const { getQuestionById, question } = useQuestion();
     const [ openModalQuestion, setOpenModalQuestion ] = useState(false);
     
     function handleOpenModalQuestion(){
         getQuestionById(id-1);
-        setTimeout(
-            () => setOpenModalQuestion(true),
-        250)
+        setTimeout(() => setOpenModalQuestion(true), 300);
     }
     
     return (
         <>
-            <section className={`${styles.container} 
-                ${styles.middle} 
-                // conditional to class call styles.showBack
+            {user && (
+                <section className={`${styles.container} 
+                    ${styles.middle} 
+                    ${styles.showBack}
                 `}
             >  
                 <div 
                     className={`
                         ${styles.back}
-                    `}  
-                    // onMouseEnter={} show info into pokeball
-                    // onMouseLeave={} hidden info on pokeball
+                    `}
                 >
                     <div className={`${styles.backContentDefault} 
                         // conditional to class call styles.hidden
@@ -91,7 +90,7 @@ export function Card({pokemon}:PokemonData){
                 </div>
 
             </section>
-
+            )}
             <QuestionModal isVisible={openModalQuestion} question={question}/>
         </>
     )

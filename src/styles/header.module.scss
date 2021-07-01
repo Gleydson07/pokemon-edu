@@ -10,7 +10,35 @@
     img{
         height: 10rem;
     }
+    
+    > div{
+        display: flex;
+        align-items: center;
+        justify-content: center;
 
+        button{
+            border: none;
+            background: none;
+            margin: 0 1rem;
+
+            display: flex;
+            align-items: center;
+            
+            cursor: pointer;
+            transition: filter 0.2s;
+
+            &:hover{
+                filter: brightness(0.9);
+            }
+            
+            svg{
+                font-size: 2.5rem;
+                color: #e72817;        
+                filter: drop-shadow(1px 1px 1px #000);       
+            }
+        }
+    }
+    
     .data{
         display: flex;
         flex-direction: column;
@@ -19,10 +47,10 @@
         align-items: flex-end;
 
         h1{
-            text-shadow: 2px 0 0 #396bba, -2px 0 0 #396bba, 0 2px 0 #396bba, 0 -2px 0 #396bba, 1px 1px #396bba, -1px -1px 0 #396bba, 1px -1px 0 #396bba, -1px 1px 0 #396bba;
-            filter: drop-shadow(0.125rem 0.125rem 0.125rem #00000088);
-            color: #ffe031;
-            font-size: 2.5rem;
+            text-shadow: 1px 0 0 #396bba, -1px 0 0 #396bba, 0 1px 0 #396bba, 0 -1px 0 #396bba, 1px 1px #396bba, -1px -1px 0 #396bba, 1px -1px 0 #396bba, -1px 1px 0 #396bba;
+            filter: drop-shadow(0.125rem 0.125rem 0.125rem #00000099);
+            color: #fad503;
+            font-size: 2.75rem;
         }
 
         .statistics{

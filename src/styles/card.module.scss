@@ -33,6 +33,7 @@
 .front {
     transform: perspective(600px) rotateY(0deg);
     filter: drop-shadow(0.125rem 0.125rem 0.25rem #00000088);
+
     
     img{
         width: 100%;
@@ -58,32 +59,38 @@
 
 .backContentDefault{
     transform: perspective(600px) rotateY(0deg);
+
     position: absolute;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 
     > img {
         position: absolute;
     }
     .backContent{
-        display: flex;
         position: absolute;
+
+        display: flex;
         flex-direction: column;
+
         align-items: center;
-        justify-content: center;
         z-index: 2;
 
-        img {
-            top: 1.25rem;
-            margin: 0 auto; 
+        height: 100%;
 
-            width: 60%;
+        img {
+            margin: 1rem auto 0.5rem; 
+
+            width: 70%;
             height: 60%;
         }
 
         h1{
             color: #fa8807;
             font-size: 1.5rem;
-            left: 0;
-            right: 0;
         }
         
         svg{

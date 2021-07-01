@@ -3,7 +3,7 @@ import { Option, Question } from "../../assets/types";
 import { database } from "../../services/firebase";
 import { useAuth } from "./useAuth";
 
-type QuestionProvider = { children: ReactNode}
+type QuestionProviderProps = { children: ReactNode}
 
 interface QuestionContextProps {
     question: Question,
@@ -13,12 +13,12 @@ interface QuestionContextProps {
 
 export const QuestionContext = createContext({} as QuestionContextProps);    
 
-export const QuestionProvider = ({children}: QuestionProvider) => {
+export const QuestionProvider = ({children}: QuestionProviderProps) => {
     const { updateGamePointsOfUser } = useAuth();
     const [ question, setQuestion ] = useState<Question>({} as Question);
 
-    function getQuestionById(id: number){
-        database.ref(`lessons/${id}`).once('value', (lesson) => 
+    async function getQuestionById(id: number){
+        await database.ref(`lessons/${id}`).once('value', (lesson) => 
             setQuestion(lesson.val())
         )
     }
@@ -29,7 +29,6 @@ export const QuestionProvider = ({children}: QuestionProvider) => {
             const isCorrect = !!response?.isCorrect;
             const points = question.points; 
 
-            console.log(isCorrect)
             updateGamePointsOfUser(points, isCorrect);
         }
     }
