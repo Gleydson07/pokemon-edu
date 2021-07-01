@@ -70,6 +70,7 @@
     > img {
         position: absolute;
     }
+
     .backContent{
         position: absolute;
 
@@ -80,6 +81,7 @@
         z-index: 2;
 
         height: 100%;
+        width: 100%;
 
         img {
             margin: 1rem auto 0.5rem; 
@@ -98,10 +100,8 @@
             width: 140%;
             height: 140%;
 
-            left: auto;
-            right: auto;
             top: auto;
-            bottom: auto;
+            bottom: -2.25rem;
         }
     }
 }

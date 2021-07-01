@@ -1,3 +1,8 @@
+export type QuestionsCheckedListProps = {
+    idPokemon:number, 
+    isCorrect:boolean
+}
+
 export type UserAnswer = {
     id: number; 
     name: string;
@@ -10,7 +15,6 @@ export type Option = {
     option: string,
     isCorrect: boolean
 }
-
 
 export type Activities = {
     enunciation: string;
@@ -41,6 +45,12 @@ export type Pokemon = {
     hp: number;
     attack: number;
     defense: number;
+    answers?: [
+        {
+            pokemonId: number,
+            isCorrect: boolean        
+        }
+    ]
 }
 
 ///           USER           ///

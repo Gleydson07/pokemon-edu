@@ -18,7 +18,6 @@ export const PokemonProvider = ({children}:PokemonProvidersProps) => {
 
     useEffect(() => { 
         loadPokemonList();
-        console.log('teste')
     }, [])
 
     async function loadPokemonList(){

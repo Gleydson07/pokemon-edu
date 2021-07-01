@@ -1,12 +1,12 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 import { useAuth } from './hooks/useAuth';
 import { useQuestion } from './hooks/useQuestion';
 
 import { QuestionModal } from '../components/Modals/QuestionModal';
-// import { FcCancel } from 'react-icons/fc'
+import { FcCancel } from 'react-icons/fc'
 
-import { Pokemon } from '../assets/types';
+import { Pokemon, QuestionsCheckedListProps } from '../assets/types';
 import { RiHeart3Fill, RiSwordFill, RiShieldFill } from 'react-icons/ri'
 import { CgPokemon } from 'react-icons/cg'
 import pokeballImg from '../assets/pokeball.png';
@@ -22,8 +22,14 @@ type PokemonData = {
 export function Card({pokemon}:PokemonData){
     const { user } = useAuth();
     const { id, name, image, type, hp, attack, defense } = pokemon;
-    const { getQuestionById, question } = useQuestion();
     const [ openModalQuestion, setOpenModalQuestion ] = useState(false);
+    const { getQuestionById, question, answerCheckedList } = useQuestion();
+    const [ answered, setAnswered ] = useState<QuestionsCheckedListProps>();
+
+    useEffect(() => {
+        const exists = answerCheckedList.find(answer => answer.idPokemon === id)
+        setAnswered(exists);
+    }, [answerCheckedList])
     
     function handleOpenModalQuestion(){
         getQuestionById(id-1);
@@ -35,7 +41,7 @@ export function Card({pokemon}:PokemonData){
             {user && (
                 <section className={`${styles.container} 
                     ${styles.middle} 
-                    ${styles.showBack}
+                    ${answered ? styles.showBack : ''}
                 `}
             >  
                 <div 
@@ -44,11 +50,11 @@ export function Card({pokemon}:PokemonData){
                     `}
                 >
                     <div className={`${styles.backContentDefault} 
-                        // conditional to class call styles.hidden
+                        ${styles.hidden}
                     `}>
                         <img src={bgPokeballImg} alt="background" />
                         <div className={styles.backContent}>
-                            {/* conditional if the user makes a mistake  {winnerChallenge && <FcCancel/>} */}
+                            {!answered?.isCorrect && <FcCancel/>}
                             <img src={image} alt={name} />
                             <h1>{name}</h1>
                         </div>
