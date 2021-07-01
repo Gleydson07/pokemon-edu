@@ -4,15 +4,16 @@ import { useAuth } from './hooks/useAuth';
 import { useQuestion } from './hooks/useQuestion';
 
 import { QuestionModal } from '../components/Modals/QuestionModal';
-import { FcCancel } from 'react-icons/fc'
 
 import { Pokemon, QuestionsCheckedListProps } from '../assets/types';
 import { RiHeart3Fill, RiSwordFill, RiShieldFill } from 'react-icons/ri'
+import { FcCancel } from 'react-icons/fc'
 import { CgPokemon } from 'react-icons/cg'
 import pokeballImg from '../assets/pokeball.png';
 import bgPokeballImg from '../assets/bgpokeball.png';
 
 import styles from '../styles/card.module.scss'
+
 import { setTimeout } from 'timers';
 
 type PokemonData = {

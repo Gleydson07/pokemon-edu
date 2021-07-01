@@ -44,7 +44,7 @@ export function QuestionModal({isVisible = false, question}: IQuestionModalProps
     function handleSubmitForm(e:FormEvent){
         e.preventDefault();
         answer && checkAnswer(question, answer);        
-        closeModal();
+        answer && closeModal();
     }
 
     function closeModal(){
