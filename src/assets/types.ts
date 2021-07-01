@@ -4,7 +4,7 @@ export type UserAnswer = {
     image: string;
     points: number;
     isCorrect: boolean;
-} | undefined;
+};
 
 export type Option = {
     option: string,

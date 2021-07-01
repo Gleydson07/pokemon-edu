@@ -1,13 +1,12 @@
-import { useEffect, useState } from 'react';
+import { FormEvent, useEffect, useState } from 'react';
 import Modal from 'react-modal';
-
-import { useQuestion } from '../hooks/useQuestion'
 
 import matematicImg from '../../assets/matematic.png';
 import portugueseImg from '../../assets/portuguese.png';
 import pikachuImg from '../../assets/pikachu.gif';
 import styles from '../../styles/modal.module.scss';
 import { Question } from '../../assets/types';
+import { useQuestion } from '../hooks/useQuestion';
 
 interface IQuestionModalProps{
     isVisible: boolean;
@@ -34,11 +33,19 @@ const customStyles = {
 Modal.setAppElement('#root');
 
 export function QuestionModal({isVisible = false, question}: IQuestionModalProps){
+    const { checkAnswer } = useQuestion();
     const [modalIsOpen, setModalIsOpen] = useState(false);
+    const [answer, setAnswer] = useState<string>();
 
     useEffect(() => {
         question && setModalIsOpen(isVisible);
     }, [isVisible])
+
+    function handleSubmitForm(e:FormEvent){
+        e.preventDefault();
+        answer && checkAnswer(question, answer);        
+        closeModal();
+    }
 
     function closeModal(){
         setModalIsOpen(false);
@@ -52,10 +59,8 @@ export function QuestionModal({isVisible = false, question}: IQuestionModalProps
             shouldCloseOnEsc={false}
             style={customStyles}
         >
-            {/* {console.log('question modal: ')} */}
-            {/* {console.log(question)} */}
             <div className={styles.container}>
-            <form className={styles.content} >
+                <form className={styles.content} onSubmit={(e) => handleSubmitForm(e)}>
                     <img src={question?.matter === "portuguese" ? 
                         portugueseImg : matematicImg
                         } alt={question?.matterShow}
@@ -67,11 +72,16 @@ export function QuestionModal({isVisible = false, question}: IQuestionModalProps
 
                         <div 
                             className={styles.answer}
-                            // onChange={handleChange}
                         >
                             {question?.activities?.options.map(response => (
                                 <span key={response.option}>
-                                    <input type="radio" id={response.option} name="quest" value={response.option} />
+                                    <input 
+                                        type="radio" 
+                                        id={response.option} 
+                                        name="quest" 
+                                        value={response.option} 
+                                        onChange={(e) => setAnswer(e.target.value)}
+                                    />
                                     <label htmlFor={response.option}>{response.option}</label>
                                 </span>
                             ))}
@@ -83,7 +93,7 @@ export function QuestionModal({isVisible = false, question}: IQuestionModalProps
                         <img src={pikachuImg} alt="Responder" />
                     </button>
                 </form>
-                </div>
+            </div>
         </Modal>
     )
 }

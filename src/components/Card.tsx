@@ -29,9 +29,7 @@ export function Card({pokemon}:PokemonData){
             () => setOpenModalQuestion(true),
         250)
     }
-
     
-
     return (
         <>
             <section className={`${styles.container} 

@@ -1,5 +1,5 @@
 import { createContext, ReactNode, useContext, useEffect, useState } from "react";
-import {firebase, auth, database} from '../../services/firebase'
+import {firebase, auth, database} from '../../services/firebase';
 
 import { User } from "../../assets/types";
 
@@ -9,7 +9,9 @@ type AuthProviderProps = {
 
 interface AuthContextData {
     user: User | undefined;
+    updateGamePointsOfUser: (points: number, isCorrect:boolean) =>  void;
     googleSignIn: () =>  Promise<void>;
+    googleSignOut: () =>  Promise<void>;
 }
 
 export const AuthContext = createContext({} as AuthContextData);
@@ -32,6 +34,26 @@ export const AuthProvider = ({children}: AuthProviderProps) => {
         }
     }, [user])
 
+    async function updateGamePointsOfUser(points: number, isCorrect:boolean){
+        if(user){
+            if(isCorrect){
+                setUser({...user, points: user.points+points})
+
+                await database.ref(`users/${user?.id}`).update({
+                    points: user.points+points
+                });
+            }else{
+                if(user.life > 0){
+                    setUser({...user, life: user.life-1})
+
+                    await database.ref(`users/${user?.id}`).update({
+                        life: user.life-1
+                    });
+                }
+            }
+        }
+    }
+
     async function googleSignIn(){
         const provider = new firebase.auth.GoogleAuthProvider();
         const result = await auth.signInWithPopup(provider);
@@ -47,11 +69,10 @@ export const AuthProvider = ({children}: AuthProviderProps) => {
         }
     }
 
-    // async function googleSignOut(){
-    //     setUser(undefined)
-    //     await firebase.auth().signOut();        
-    //     history.push('/')
-    // }
+    async function googleSignOut(){
+        setUser(undefined)
+        await firebase.auth().signOut();
+    }
 
     async function getUser(uid: string, photoURL: string, displayName: string){
 
@@ -89,7 +110,9 @@ export const AuthProvider = ({children}: AuthProviderProps) => {
     return (
         <AuthContext.Provider value={{
             user,
-            googleSignIn
+            updateGamePointsOfUser,
+            googleSignIn,
+            googleSignOut
         }}>
             {children}
         </AuthContext.Provider>

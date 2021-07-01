@@ -1,18 +1,21 @@
 import { createContext, ReactNode, useContext, useState } from "react";
-import { Question } from "../../assets/types";
+import { Option, Question } from "../../assets/types";
 import { database } from "../../services/firebase";
+import { useAuth } from "./useAuth";
 
 type QuestionProvider = { children: ReactNode}
 
 interface QuestionContextProps {
     question: Question,
-    getQuestionById: (id: number) =>  void
+    getQuestionById: (id: number) =>  void,
+    checkAnswer: (question:Question, answer: string) => void
 }
 
 export const QuestionContext = createContext({} as QuestionContextProps);    
 
 export const QuestionProvider = ({children}: QuestionProvider) => {
-    const [ question, setQuestion ] = useState<Question>({} as Question)
+    const { updateGamePointsOfUser } = useAuth();
+    const [ question, setQuestion ] = useState<Question>({} as Question);
 
     function getQuestionById(id: number){
         database.ref(`lessons/${id}`).once('value', (lesson) => 
@@ -20,10 +23,22 @@ export const QuestionProvider = ({children}: QuestionProvider) => {
         )
     }
 
+    function checkAnswer(question:Question, answer: string){
+        if(question){
+            const response = question.activities.options.find((element:Option) => element.option === answer);
+            const isCorrect = !!response?.isCorrect;
+            const points = question.points; 
+
+            console.log(isCorrect)
+            updateGamePointsOfUser(points, isCorrect);
+        }
+    }
+
     return (
         <QuestionContext.Provider value={{
             question,
-            getQuestionById
+            getQuestionById,
+            checkAnswer
         }}>
             {children}
         </QuestionContext.Provider>

@@ -13,7 +13,6 @@ export default function Dashboard() {
   return (
     <div>
         <Header/>
-        {console.log(pokemons)}
         <div className={styles.container} >
             <div className={styles.contentPokeballList} >
 
