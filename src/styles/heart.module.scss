@@ -1,9 +1,11 @@
 .container {
-    margin-top: 0.25rem;
-
     svg{
-        width: 2rem;
-        height: 2rem;
+        width: 1.5rem;
+        height: 1.5rem;
         filter: drop-shadow(0.125rem 0.125rem 0.125rem #00000099);
+
+        &+svg{
+            margin-left: 0.25rem;
+        }
     }
 }

@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react';
 import { useAuth } from './hooks/useAuth';
 import { useQuestion } from './hooks/useQuestion';
 
-import { QuestionModal } from '../components/Modals/QuestionModal';
+import { QuestionModal } from '../components/modals/QuestionModal';
 
 import { Pokemon, QuestionsCheckedListProps } from '../assets/types';
 import { RiHeart3Fill, RiSwordFill, RiShieldFill } from 'react-icons/ri'
@@ -13,7 +13,6 @@ import pokeballImg from '../assets/pokeball.png';
 import bgPokeballImg from '../assets/bgpokeball.png';
 
 import styles from '../styles/card.module.scss'
-
 import { setTimeout } from 'timers';
 
 type PokemonData = {
@@ -98,6 +97,7 @@ export function Card({pokemon}:PokemonData){
 
             </section>
             )}
+            
             <QuestionModal isVisible={openModalQuestion} question={question}/>
         </>
     )

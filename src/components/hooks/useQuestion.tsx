@@ -8,6 +8,7 @@ type QuestionProviderProps = { children: ReactNode}
 interface QuestionContextProps {
     question: Question,
     answerCheckedList: QuestionsCheckedListProps[],
+    answerChecked: QuestionsCheckedListProps | undefined,
     getQuestionById: (id: number) =>  void,
     checkAnswer: (question:Question, answer: string) => void,
 }
@@ -17,7 +18,9 @@ export const QuestionContext = createContext({} as QuestionContextProps);
 export const QuestionProvider = ({children}: QuestionProviderProps) => {
     const { updateGamePointsOfUser, user } = useAuth();
     const [ question, setQuestion ] = useState<Question>({} as Question);
+    const [ answerChecked, setAnswerChecked ] = useState<QuestionsCheckedListProps>();
     const [ answerCheckedList, setAnswerCheckedList ] = useState<QuestionsCheckedListProps[]>([])
+
 
     useEffect(() => {
         getAnswerListFromUser();
@@ -50,6 +53,7 @@ export const QuestionProvider = ({children}: QuestionProviderProps) => {
             const points = question.points;
 
             database.ref(`answers/${user?.id}`).push({idPokemon, isCorrect});
+            setAnswerChecked({idPokemon, isCorrect})
             setAnswerCheckedList([...answerCheckedList, {idPokemon, isCorrect}]);
             updateGamePointsOfUser(points, isCorrect);
         }
@@ -59,6 +63,7 @@ export const QuestionProvider = ({children}: QuestionProviderProps) => {
         <QuestionContext.Provider value={{
             question,
             answerCheckedList,
+            answerChecked,
             getQuestionById,
             checkAnswer
         }}>

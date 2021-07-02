@@ -1,0 +1,882 @@
+{
+    "lessons": [
+        {
+            "id": 1,
+            "points": 5,
+            "fase": 1,
+            "matter": "portuguese",
+            "matterShow": "Português",
+            "activities": {
+                "enunciation": "Juliana, vamos ao parque hoje a tarde ? Assinado: Fernanda",
+                "question": "O texto é um(a):",
+                "options": [
+                    {
+                        "option": "Poema",
+                        "isCorrect": false
+                    },
+                    {
+                        "option": "Receita",
+                        "isCorrect": false
+                    },
+                    {
+                        "option": "Convite",
+                        "isCorrect": true
+                    },
+                    {
+                        "option": "Música",
+                        "isCorrect": false
+                    }
+                ]
+            }
+        },
+        {
+            "id": 2,
+            "points": 5,
+            "fase": 1,
+            "matter": "portuguese",
+            "matterShow": "Português",
+            "activities": {
+                "enunciation": "João Vitor foi jogar _______ com seu melhor ______ e fez um ___.",
+                "question": "Qual o complemento correto da frase?:",
+                "options": [
+                    {
+                        "option": "pedra, pai, bezerro",
+                        "isCorrect": false
+                    },
+                    {
+                        "option": "futebol, amigo, gol",
+                        "isCorrect": true
+                    },
+                    {
+                        "option": "video game, cachorro, boné",
+                        "isCorrect": false
+                    },
+                    {
+                        "option": "pião, cavalo, acidente",
+                        "isCorrect": false
+                    }
+                ]
+            }            
+        },
+        {
+            "id": 3,
+            "points": 7,
+            "fase": 1,
+            "matter": "portuguese",
+            "matterShow": "Português",
+            "activities": {
+                "enunciation": "abacaxí:",
+                "question": "Qual a correta divisão silábica desta palavra?",
+                "options": [
+                    {
+                        "option": "aba-ca-xí",
+                        "isCorrect": false
+                    },
+                    {
+                        "option": "ab-aca-xí",
+                        "isCorrect": false
+                    },
+                    {
+                        "option": "a-ca-ba-xi",
+                        "isCorrect": false
+                    },
+                    {
+                        "option": "a-ba-ca-xí",
+                        "isCorrect": true
+                    }
+                ]
+            }            
+        },
+        {
+            "id": 4,
+            "points": 5,
+            "fase": 1,
+            "matter": "portuguese",
+            "matterShow": "Português",
+        "activities": {
+                "enunciation": "Maria Heloísa foi tomar banho de _____ com sua _______ no _______.",
+                "question": "Qual o complemento correto da frase?:",
+                "options": [
+                    {
+                        "option": "praia, família, feriado",
+                        "isCorrect": true
+                    },
+                    {
+                        "option": "cachoeira, bola, quarto",
+                        "isCorrect": false
+                    },
+                    {
+                        "option": "refrigerante, boneca, quintal",
+                        "isCorrect": false
+                    },
+                    {
+                        "option": "café, tv, chuveiro",
+                        "isCorrect": false
+                    }
+                ]
+            }
+        },
+        {
+            "id": 5,
+            "points": 5,
+            "fase": 1,
+            "matter": "portuguese",
+            "matterShow": "Português",
+            "activities": {
+                "enunciation": "A ______ é um animal que possui um pescoço enorme.",
+                "question": "Qual a palavra que está faltando?",
+                "options": [
+                    {
+                        "option": "girafa",
+                        "isCorrect": true
+                    },
+                    {
+                        "option": "zebra",
+                        "isCorrect": false
+                    },
+                    {
+                        "option": "camelo",
+                        "isCorrect": false
+                    },
+                    {
+                        "option": "baleia",
+                        "isCorrect": false
+                    }
+                ]
+            }
+        },      
+        
+        {
+            "id": 6,
+            "points": 7,
+            "fase": 2,
+            "matter": "portuguese",
+            "matterShow": "Português",
+            "activities": {
+                "enunciation": "gato, cobra, cachorro",
+                "question": "Qual o feminino destas palavras?",
+                "options": [
+                    {
+                        "option": "gato, cobro, cachorra",
+                        "isCorrect": false
+                    },
+                    {
+                        "option": "gata, cobra, cachorra",
+                        "isCorrect": true
+                    },
+                    {
+                        "option": "gatas, cobras, cachorras",
+                        "isCorrect": false
+                    },
+                    {
+                        "option": "gatinho, cobro, cachorrinha",
+                        "isCorrect": false
+                    }
+                ]
+            }
+        },
+        {
+            "id": 7,
+            "points": 8,
+            "fase": 2,
+            "matter": "portuguese",
+            "matterShow": "Português",
+            "activities": {
+                "enunciation": "Alemão, pão, pião",
+                "question": "Qual o plural destas palavras?",
+                "options": [
+                    {
+                        "option": "Alemães, pães, piões",
+                        "isCorrect": true
+                    },
+                    {
+                        "option": "Alemões, pães, piãos",
+                        "isCorrect": false
+                    },
+                    {
+                        "option": "Alemães, pãos, piãos",
+                        "isCorrect": false
+                    },
+                    {
+                        "option": "Alemão, pão, pião",
+                        "isCorrect": false
+                    }
+                ]
+            }
+        },
+        {
+            "id": 8,
+            "points": 9,
+            "fase": 2,
+            "matter": "portuguese",
+            "matterShow": "Português",
+            "activities": {
+                "enunciation": "pato, sapo, coelho",
+                "question": "Qual o diminutivo destas palavras?",
+                "options": [
+                    {
+                        "option": "patinho, rã, coelho",
+                        "isCorrect": false
+                    },
+                    {
+                        "option": "pateta, cururu, esquilo",
+                        "isCorrect": false
+                    },
+                    {
+                        "option": "patinho, sapinho, coelhozinho",
+                        "isCorrect": false
+                    },
+                    {
+                        "option": "patinho, sapinho, coelhinho",
+                        "isCorrect": true
+                    }
+                ]
+            }
+        },
+        {
+            "id": 9,
+            "points": 7,
+            "fase": 2,
+            "matter": "portuguese",
+            "matterShow": "Português",
+            "activities": {
+                "enunciation": "A - O - M - R",
+                "question": "Quais palavras podem ser formadas com estas letras?",
+                "options": [
+                    {
+                        "option": "AMOR, RARO, MOER",
+                        "isCorrect": false
+                    },
+                    {
+                        "option": "ROMA, AMOR, OMAR",
+                        "isCorrect": true
+                    },
+                    {
+                        "option": "ROMEU, RAMO, RIMOU",
+                        "isCorrect": false
+                    },
+                    {
+                        "option": "AMOR, ROMA, REAL",
+                        "isCorrect": false
+                    }
+                ]
+            }
+        },
+        {
+            "id": 10,
+            "points": 10,
+            "fase": 2,
+            "matter": "portuguese",
+            "matterShow": "Português",
+            "activities": {
+                "enunciation": "MI__O, BOLI__O, PA__AÇO",
+                "question": "Use LH ou NH para completar as palavras:",
+                "options": [
+                    {
+                        "option": "LH, NH, LH",
+                        "isCorrect": true
+                    },
+                    {
+                        "option": "NH, NH, LH",
+                        "isCorrect": false
+                    },
+                    {
+                        "option": "NH, NH, NH",
+                        "isCorrect": false
+                    },
+                    {
+                        "option": "LH, LH, NH",
+                        "isCorrect": false
+                    }
+                ]
+            }
+        },
+
+        {
+            "id": 11,
+            "points": 22,
+            "fase": 3,
+            "matter": "portuguese",
+            "matterShow": "Português",
+            "activities": {
+                "enunciation": "PRO__EMA, __IMA, __OBO",
+                "question": "Completes as palavras com as consoantes: CL, GL, BL",
+                "options": [
+                    {
+                        "option": "CL, GL, BL",
+                        "isCorrect": false
+                    },
+                    {
+                        "option": "BL, CL, GL",
+                        "isCorrect": true
+                    },
+                    {
+                        "option": "BL, GL, CL",
+                        "isCorrect": false
+                    },
+                    {
+                        "option": "GL, CL, BL",
+                        "isCorrect": false
+                    }
+                ]
+            }
+        },
+        {
+            "id": 12,
+            "points": 23,
+            "fase": 3,
+            "matter": "portuguese",
+            "matterShow": "Português",
+            "activities": {
+                "enunciation": "PEIXE, CADEADO, MELÂNCIA",
+                "question": "Identifique o encontro vacálico nas palavras:",
+                "options": [
+                    {
+                        "option": "EI, EA, IA",
+                        "isCorrect": true
+                    },
+                    {
+                        "option": "PE, DE, ME",
+                        "isCorrect": false
+                    },
+                    {
+                        "option": "XE, CAD, AN",
+                        "isCorrect": false
+                    },
+                    {
+                        "option": "EI, EA, LÂ",
+                        "isCorrect": false
+                    }
+                ]
+            }
+        },
+        {
+            "id": 13,
+            "points": 25,
+            "fase": 3,
+            "matter": "portuguese",
+            "matterShow": "Português",
+            "activities": {
+                "enunciation": "João é inteligente. Que bicileta linda! Você vai ao cinema?",
+                "question": "As frases citadas são:",
+                "options": [
+                    {
+                        "option": "Negativa, Exclamativa, Interrogativa",
+                        "isCorrect": false
+                    },
+                    {
+                        "option": "Afirmativa, Exclamativa, Negativa",
+                        "isCorrect": false
+                    },
+                    {
+                        "option": "Afirmativa, Interrogativa, Exclamativa",
+                        "isCorrect": false
+                    },
+                    {
+                        "option": "Afirmativa, Exclamativa, Interrogativa",
+                        "isCorrect": true
+                    }
+                ]
+            }
+        },
+        {
+            "id": 14,
+            "points": 19,
+            "fase": 3,
+            "matter": "portuguese",
+            "matterShow": "Português",
+            "activities": {
+                "enunciation": "Lindo, guloso, contente",
+                "question": "Quais o sinônimos equivalente a cada palavra?",
+                "options": [
+                    {
+                        "option": "feio, gordo, triste",
+                        "isCorrect": false
+                    },
+                    {
+                        "option": "bonito, comilão, alegre",
+                        "isCorrect": true
+                    },
+                    {
+                        "option": "legal, saboroso, feliz",
+                        "isCorrect": false
+                    },
+                    {
+                        "option": "triste, magro, alegre",
+                        "isCorrect": false
+                    }
+                ]
+            }
+        },
+        {
+            "id": 15,
+            "points": 15,
+            "fase": 3,
+            "matter": "portuguese",
+            "matterShow": "Português",
+            "activities": {
+                "enunciation": "TRAVESS__RO, TES__RA, TELEVI__",
+                "question": "Complete as frases com os encontros vacálicos:",
+                "options": [
+                    {
+                        "option": "EI, OU, ÃO",
+                        "isCorrect": true
+                    },
+                    {
+                        "option": "AI, AU, OA",
+                        "isCorrect": false
+                    },
+                    {
+                        "option": "EI, OI, ÃO",
+                        "isCorrect": false
+                    },
+                    {
+                        "option": "OU, OU, ÃO",
+                        "isCorrect": false
+                    }
+                ]
+            }
+        },
+
+        {
+            "id": 16,
+            "points": 5,
+            "fase": 1,
+            "matter": "matematic",
+            "matterShow": "Matemática",
+            "activities": {
+                "enunciation": "3, 7, 10",
+                "question": "Quais os antecessores e sucessores destes números?",
+                "options": [
+                    {
+                        "option": "1 e 4, 6 e 8, 9 e 11",
+                        "isCorrect": false
+                    },
+                    {
+                        "option": "2 e 4, 6 e 8, 9 e 11",
+                        "isCorrect": true
+                    },
+                    {
+                        "option": "30 e 40, 60 e 70, 1 e 100",
+                        "isCorrect": false
+                    },
+                    {
+                        "option": "1 e 5, 7 e 7, 5 e 11",
+                        "isCorrect": false
+                    }
+                ]
+            }
+        },
+        {
+            "id": 17,
+            "points": 3,
+            "fase": 1,
+            "matter": "matematic",
+            "matterShow": "Matemática",
+            "activities": {
+                "enunciation": "Quanto é 1 + 1?",
+                "question": "Selecione a resposta correta.",
+                "options": [
+                    {
+                        "option": "0",
+                        "isCorrect": false
+                    },
+                    {
+                        "option": "1",
+                        "isCorrect": false
+                    },
+                    {
+                        "option": "2",
+                        "isCorrect": true
+                    },
+                    {
+                        "option": "11",
+                        "isCorrect": false
+                    }
+                ]
+            }
+        },
+        {
+            "id": 18,
+            "points": 8,
+            "fase": 1,
+            "matter": "matematic",
+            "matterShow": "Matemática",
+            "activities": {
+                "enunciation": "Quanto é 5 x 2?",
+                "question": "Selecione a resposta correta.",
+                "options": [
+                    {
+                        "option": "7",
+                        "isCorrect": false
+                    },
+                    {
+                        "option": "52",
+                        "isCorrect": false
+                    },
+                    {
+                        "option": "25",
+                        "isCorrect": false
+                    },
+                    {
+                        "option": "10",
+                        "isCorrect": true
+                    }
+                ]
+            }
+        },
+        {
+            "id": 19,
+            "points": 5,
+            "fase": 1,
+            "matter": "matematic",
+            "matterShow": "Matemática",
+            "activities": {
+                "enunciation": "Quanto é 10 - 2?",
+                "question": "Selecione a resposta correta.",
+                "options": [
+                    {
+                        "option": "8",
+                        "isCorrect": true
+                    },
+                    {
+                        "option": "12",
+                        "isCorrect": false
+                    },
+                    {
+                        "option": "102",
+                        "isCorrect": false
+                    },
+                    {
+                        "option": "9",
+                        "isCorrect": false
+                    }
+                ]
+            }
+        },
+        {
+            "id": 20,
+            "points": 10,
+            "fase": 1,
+            "matter": "matematic",
+            "matterShow": "Matemática",
+            "activities": {
+                "enunciation": "Quanto é 10 + 7?",
+                "question": "Selecione a resposta correta.",
+                "options": [
+                    {
+                        "option": "17",
+                        "isCorrect": true
+                    },
+                    {
+                        "option": "10",
+                        "isCorrect": false
+                    },
+                    {
+                        "option": "7",
+                        "isCorrect": false
+                    },
+                    {
+                        "option": "107",
+                        "isCorrect": false
+                    }
+                ]
+            }
+        },
+
+        {
+            "id": 21,
+            "points": 7,
+            "fase": 2,
+            "matter": "matematic",
+            "matterShow": "Matemática",
+            "activities": {
+                "enunciation": "João tem 5 laranjas e deu 2 a Maria e chupou 1.",
+                "question": "Quantas laranjas restaram?",
+                "options": [
+                    {
+                        "option": "4",
+                        "isCorrect": false
+                    },
+                    {
+                        "option": "2",
+                        "isCorrect": true
+                    },
+                    {
+                        "option": "3",
+                        "isCorrect": false
+                    },
+                    {
+                        "option": "8",
+                        "isCorrect": false
+                    }
+                ]
+            }
+        },
+        {
+            "id": 22,
+            "points": 8,
+            "fase": 2,
+            "matter": "matematic",
+            "matterShow": "Matemática",
+            "activities": {
+                "enunciation": "Heloísa tem R$ 10, e quer comprar dois brinquedos que custam R$ 7 cada.",
+                "question": "Quanto falta para que Heloísa possa comprar os dois brinquedos",
+                "options": [
+                    {
+                        "option": "7",
+                        "isCorrect": false
+                    },
+                    {
+                        "option": "10",
+                        "isCorrect": false
+                    },
+                    {
+                        "option": "4",
+                        "isCorrect": true
+                    },
+                    {
+                        "option": "14",
+                        "isCorrect": false
+                    }
+                ]
+            }
+        },
+        {
+            "id": 23,
+            "points": 10,
+            "fase": 2,
+            "matter": "matematic",
+            "matterShow": "Matemática",
+            "activities": {
+                "enunciation": "5 dezenas e 3 unidades",
+                "question": "Qual número équivale ao enunciado?",
+                "options": [
+                    {
+                        "option": "33",
+                        "isCorrect": false
+                    },
+                    {
+                        "option": "530",
+                        "isCorrect": false
+                    },
+                    {
+                        "option": "53",
+                        "isCorrect": true
+                    },
+                    {
+                        "option": "35",
+                        "isCorrect": false
+                    }
+                ]
+            }
+        },
+        {
+            "id": 24,
+            "points": 6,
+            "fase": 2,
+            "matter": "matematic",
+            "matterShow": "Matemática",
+            "activities": {
+                "enunciation": "125",
+                "question": "Selecione a opção correta.",
+                "options": [
+                    {
+                        "option": "1 centena, 2 dezenas, 5 unidades",
+                        "isCorrect": true
+                    },
+                    {
+                        "option": "12 unidades, 5 dezendas",
+                        "isCorrect": false
+                    },
+                    {
+                        "option": "25 dezenas",
+                        "isCorrect": false
+                    },
+                    {
+                        "option": "125 dezenas",
+                        "isCorrect": false
+                    }
+                ]
+            }
+        },
+        {
+            "id": 25,
+            "points": 10,
+            "fase": 2,
+            "matter": "matematic",
+            "matterShow": "Matemática",
+            "activities": {
+                "enunciation": "22 X 3",
+                "question": "Qual o resultado da operação matemática?",
+                "options": [
+                    {
+                        "option": "66",
+                        "isCorrect": true
+                    },
+                    {
+                        "option": "44",
+                        "isCorrect": false
+                    },
+                    {
+                        "option": "223",
+                        "isCorrect": false
+                    },
+                    {
+                        "option": "22",
+                        "isCorrect": false
+                    }
+                ]
+            }
+        },
+
+        {
+            "id": 26,
+            "points": 22,
+            "fase": 3,
+            "matter": "matematic",
+            "matterShow": "Matemática",
+            "activities": {
+                "enunciation": "8 x 2 | 15 - x = 9",
+                "question": "Resolva as operações e selecione os valores corretos:",
+                "options": [
+                    {
+                        "option": "10, 24",
+                        "isCorrect": false
+                    },
+                    {
+                        "option": "16, 6",
+                        "isCorrect": true
+                    },
+                    {
+                        "option": "28, 24",
+                        "isCorrect": false
+                    },
+                    {
+                        "option": "11, 10",
+                        "isCorrect": false
+                    }
+                ]
+            }
+        },
+        {
+            "id": 27,
+            "points": 23,
+            "fase": 3,
+            "matter": "matematic",
+            "matterShow": "Matemática",
+            "activities": {
+                "enunciation": "João comprou 5 pirulitos por R$ 1 cada, e vendeu todos juntos por R$ 12.",
+                "question": "Quanto João recebeu a mais do que gastou?",
+                "options": [
+                    {
+                        "option": "12",
+                        "isCorrect": false
+                    },
+                    {
+                        "option": "7",
+                        "isCorrect": true
+                    },
+                    {
+                        "option": "5",
+                        "isCorrect": false
+                    },
+                    {
+                        "option": "17",
+                        "isCorrect": false
+                    }
+                ]
+            }
+        },
+        {
+            "id": 28,
+            "points": 25,
+            "fase": 3,
+            "matter": "matematic",
+            "matterShow": "Matemática",
+            "activities": {
+                "enunciation": "O Sr. Cicero gosta muito de pão,ele come 10 pães todos os dias.",
+                "question": "Se ele comeu durante 5 dias e no quinto dia comeu 5 paẽs a mais, qual o total de pães que ele comeu?",
+                "options": [
+                    {
+                        "option": "15",
+                        "isCorrect": false
+                    },
+                    {
+                        "option": "50",
+                        "isCorrect": false
+                    },
+                    {
+                        "option": "65",
+                        "isCorrect": false
+                    },
+                    {
+                        "option": "55",
+                        "isCorrect": true
+                    }
+                ]
+            }
+        },
+        {
+            "id": 29,
+            "points": 19,
+            "fase": 3,
+            "matter": "matematic",
+            "matterShow": "Matemática",
+            "activities": {
+                "enunciation": "Raicca comprou uma boneca no valor de R$ 68 e pagou com R$ 80.",
+                "question": "Qual o troco correto que deve ser repassado para Raicca?",
+                "options": [
+                    {
+                        "option": "R$ 22",
+                        "isCorrect": false
+                    },
+                    {
+                        "option": "R$ 12",
+                        "isCorrect": true
+                    },
+                    {
+                        "option": "R$ 13",
+                        "isCorrect": false
+                    },
+                    {
+                        "option": "R$ 148",
+                        "isCorrect": false
+                    }
+                ]
+            }
+        },
+        {
+            "id": 30,
+            "points": 15,
+            "fase": 3,
+            "matter": "matematic",
+            "matterShow": "Matemática",
+            "activities": {
+                "enunciation": "1, 2, 3, 4, 5, 6, 7, 8, 9, 10",
+                "question": "Quantos números pares existem na lista?",
+                "options": [
+                    {
+                        "option": "5",
+                        "isCorrect": true
+                    },
+                    {
+                        "option": "10",
+                        "isCorrect": false
+                    },
+                    {
+                        "option": "6",
+                        "isCorrect": false
+                    },
+                    {
+                        "option": "4",
+                        "isCorrect": false
+                    }
+                ]
+            }
+        }   
+    ]
+}
+        
+    
+    

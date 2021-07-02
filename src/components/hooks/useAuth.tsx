@@ -83,7 +83,9 @@ export const AuthProvider = ({children}: AuthProviderProps) => {
 
         const splitedName = displayName.split(" ");
         let name = "";
-        if(splitedName[1].length < 3) {
+        if(splitedName[0].length > 6){
+            name = splitedName[0];
+        }else if(splitedName[0].length <= 6 && splitedName[1].length < 3) {
             name = (splitedName[0].concat(" ", splitedName[1], " ", splitedName[2]))
         }else{
             name = (splitedName[0].concat(" ", splitedName[1]))

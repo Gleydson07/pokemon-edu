@@ -6,66 +6,74 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    
+
     img{
         height: 10rem;
     }
     
-    > div{
+    div:first-of-type{
         display: flex;
-        align-items: center;
-        justify-content: center;
-
-        button{
-            border: none;
-            background: none;
-            margin: 0 1rem;
-
-            display: flex;
-            align-items: center;
-            
-            cursor: pointer;
-            transition: filter 0.2s;
-
-            &:hover{
-                filter: brightness(0.9);
-            }
-            
-            svg{
-                font-size: 2.5rem;
-                color: #e72817;        
-                filter: drop-shadow(1px 1px 1px #000);       
-            }
-        }
-    }
-    
-    .data{
-        display: flex;
-        flex-direction: column;
-        align-items: flex-end;
-        margin-right: 1rem;
-        align-items: flex-end;
-
-        h1{
-            text-shadow: 1px 0 0 #396bba, -1px 0 0 #396bba, 0 1px 0 #396bba, 0 -1px 0 #396bba, 1px 1px #396bba, -1px -1px 0 #396bba, 1px -1px 0 #396bba, -1px 1px 0 #396bba;
-            filter: drop-shadow(0.125rem 0.125rem 0.125rem #00000099);
-            color: #fad503;
-            font-size: 2.75rem;
-        }
+        height: 100%;
 
         .statistics{
             display: flex;
             flex-direction: column;
-            align-items: flex-end;
-            min-width: 200px;
+            min-width: 270px;
             width: 100%;
+
+            div {
+                button{
+                    border: none;
+                    background: none;
+                    
+                    display: flex;
+                    align-items: center;
+    
+                    cursor: pointer;
+                    transition: filter 0.2s;
+
+                    margin: 0 2rem;
+                    
+                    &:hover{
+                        filter: brightness(0.9);
+                    }
+    
+                    svg{
+                        font-size: 1.5rem;  
+                        filter: drop-shadow(1px 1px 1px #000);       
+                    }
+                }
+            }
             
-            > div{
+            .header{
                 display: flex;
                 align-items: center;
-                justify-content: flex-end;
+                justify-content: space-between;
+                h1{
+                    text-shadow: 1px 0 0 #396bba, -1px 0 0 #396bba, 0 1px 0 #396bba, 0 -1px 0 #396bba, 1px 1px #396bba, -1px -1px 0 #396bba, 1px -1px 0 #396bba, -1px 1px 0 #396bba;
+                    filter: drop-shadow(0.125rem 0.125rem 0.125rem #00000099);
+                    color: #fad503;
+                    font-size: 2.25rem;
+                }
+    
+                img{
+                    border-radius: 50%;
+                    width: 2.25rem;
+                    height: 2.25rem;
+                    margin-right: 0.5rem;
+                }
+                
+                svg{                    
+                    color: #e72817;      
+                }
+            }
+            
+            .footer{
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
                 width: 100%;
-
+    
                 span{
                     display: block;
                     color: #ffe031;
@@ -73,20 +81,23 @@
                     letter-spacing: 0.125rem;
                     filter: drop-shadow(0.125rem 0.125rem 0.125rem #00000055);
                     text-shadow: 1px 0 0 #396bba99, -1px 0 0 #396bba99, 0 1px 0 #396bba99, 0 -1px 0 #396bba99, 1px 1px #396bba99, -1px -1px 0 #396bba99, 1px -1px 0 #396bba99, -1px 1px 0 #396bba99;
-
-                    & + span {
-                        margin-left: 1rem;
-                    }
-                    
+                    font-size: 1.25rem;
+                    margin-right: 1rem;
+    
                     strong {
-                        font-size: 1.125rem;
+                        font-size: 1.25rem;
                         color: #fff;
                         text-shadow: 2px 0 0 #00000022, -2px 0 0 #00000022, 0 2px 0 #00000022, 0 -2px 0 #00000022, 1px 1px #00000022, -1px -1px 0 #00000022, 1px -1px 0 #00000022, -1px 1px 0 #00000022;
                     }
                 }
+
+                svg{
+                    
+                    color: #f5a107;
+                }
             } 
-        }
-    }
+        }    
+    }  
 }
 
 @media(max-width: 720px){
