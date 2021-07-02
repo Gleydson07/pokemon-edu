@@ -21,7 +21,7 @@ type PokemonData = {
 
 export function Card({pokemon}:PokemonData){
     const { user } = useAuth();
-    const { id, name, image, type, hp, attack, defense } = pokemon;
+    const { id, name, image, hp, attack, defense } = pokemon;
     const [ openModalQuestion, setOpenModalQuestion ] = useState(false);
     const { getQuestionById, question, answerCheckedList } = useQuestion();
     const [ answered, setAnswered ] = useState<QuestionsCheckedListProps>();
@@ -79,12 +79,12 @@ export function Card({pokemon}:PokemonData){
                                 </div>
                             </div>
 
-                            <div className={styles.stats}>
+                            {/* <div className={styles.stats}>
                                 <div>
                                     <CgPokemon/>
                                     <strong>{type}</strong>
                                 </div>
-                            </div>
+                            </div> */}
                         </div>
                     </div>                
                 </div>

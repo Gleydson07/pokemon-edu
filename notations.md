@@ -11,4 +11,3 @@
 ## Reset
 ### Quando um jogador resetar o jogo, sua vida e pontos voltam para o default: life: 5, points: 0
 ### Sua lista de pokemons é zerada
-

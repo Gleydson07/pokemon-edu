@@ -1,7 +1,7 @@
 .container {
     position: absolute;
-    height: 180px;
-    width: 180px;
+    height: 130px;
+    width: 130px;
     border-radius: 50%;
 
     cursor: url("../assets/arrow.png"), default;
@@ -9,9 +9,9 @@
 
 .middle {
     position: relative;
-    top: 50%;
+    top: 40%;
     left: 50%;
-    transform: translate(-50%, -50%)
+    transform: translate(-50%, -50%);
 }
 
 .showBack{
@@ -91,17 +91,22 @@
         }
 
         h1{
+            position: absolute;
             color: #fa8807;
-            font-size: 1.5rem;
+            font-size: 1.125rem;
+
+            top: auto;
+            bottom: 0.9rem;
         }
         
         svg{
             position: absolute;
-            width: 140%;
-            height: 140%;
+            width: 137%;
+            height: 137%;
+            z-index: 2;
 
             top: auto;
-            bottom: -2.25rem;
+            bottom: -1.5rem;
         }
     }
 }
@@ -120,30 +125,31 @@
     background: linear-gradient(to right, #414345, #232526); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 
     img {
-        margin-top: 1.25rem;
-        margin-bottom: 0.5rem;
+        margin-top: 1.125rem;
+        margin-bottom: 0.125rem;
         width: 50%;
         height: 40%;
     }
-
+    
     h1{
         width: 100%;
         color: #fa8807;
+        font-size: 1.25rem;
         text-align: center;
     }
 
     > div {
         display: flex;
         flex-direction: column;
-        margin: 0.25rem;
-        width: 70%;
+        margin: 0.125rem;
+        width: 65%;
 
         .stats{
             display: flex;
             align-items: center;
 
             & + div {
-                margin-top: 0.25rem;
+                margin-top: 0.125rem;
             }
     
             div{
@@ -153,7 +159,7 @@
                 
                 svg, strong{
                     color: #fff;
-                    font-size: 0.8rem;;
+                    font-size: 0.75rem;;
                 }
             }
         }        

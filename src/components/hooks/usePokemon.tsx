@@ -22,12 +22,12 @@ export const PokemonProvider = ({children}:PokemonProvidersProps) => {
 
     async function loadPokemonList(){
         let list = [] as Pokemon[];
-            for(let count = 0; count < 30; count++){
+            for(let count = 16; count <= 45; count++){ // 16 - 45
                 await axios.get(`https://pokeapi.co/api/v2/pokemon/${count+1}/`)
                 .then(response => response.data)
                 .then(data => {
                     list.push({                       
-                        id: data.id,
+                        id: count-15,
                         name: data.name,
                         image: data.sprites.other['dream_world']['front_default'],
                         type: data.types[0].type.name,
@@ -38,7 +38,8 @@ export const PokemonProvider = ({children}:PokemonProvidersProps) => {
                 })
             })
         }
-        setPokemons(shuffle(list).slice(0, 15));        
+        setPokemons(shuffle(list));        
+        // setPokemons(shuffle(list).slice(0, 15));        
     }
 
     function shuffle(array: Array<any>) {

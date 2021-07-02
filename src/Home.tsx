@@ -1,10 +1,10 @@
-// import { useState } from "react";
 import { useHistory } from 'react-router-dom';
 import { useAuth } from './components/hooks/useAuth';
 
 import logoImg from './assets/logo.png'
 import styles from './styles/home.module.scss';
 import { useEffect } from 'react';
+
 
 export function Home(){
     const history = useHistory();
@@ -24,7 +24,7 @@ export function Home(){
                 <img src={logoImg} alt="pokemon education" />
                 <button 
                     onClick={handleLogin}
-                    className={styles.signIn}
+                    className={`styles.signIn tinRightIn`}
                 >
                     Entrar com Google
                 </button>

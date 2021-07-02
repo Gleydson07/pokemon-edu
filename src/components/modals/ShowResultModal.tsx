@@ -5,6 +5,8 @@ import { QuestionsCheckedListProps } from '../../assets/types';
 import winImg from '../../assets/win.png';
 import lossImg from '../../assets/loss.png';
 import styles from '../../styles/modalResult.module.scss';
+import { GameReload } from './GameReload';
+import { useAuth } from '../hooks/useAuth';
 
 interface IShowResultModalProps{
     isVisible: boolean;
@@ -15,7 +17,7 @@ interface IShowResultModalProps{
 const customStyles = {
     zIndex: 1,
     overlay:{
-        background: "#00000099",
+        background: "#00000033",
     },
     content: {
         top: '50%',
@@ -36,19 +38,24 @@ export function ShowResultModal({
     questionChecked,
     points
 }: IShowResultModalProps){
+    const { user } = useAuth();  
     const [modalIsOpen, setModalIsOpen] = useState(false);
+    const [modalIsOpenGameReload, setModalIsOpenGameReload] = useState(false);
 
     useEffect(() => {
         questionChecked && setModalIsOpen(isVisible);
-        setTimeout(() => closeModal(), 3000);
-    }, [isVisible])
+        setTimeout(() => closeModal(), 1000);
+
+        user?.life === 0 && setModalIsOpenGameReload(true);
+    }, [isVisible, user])
 
     function closeModal(){
         setModalIsOpen(false);
     }
 
     return(
-        <Modal
+        <>
+            <Modal
             isOpen={modalIsOpen}
             onRequestClose={closeModal}
             shouldCloseOnOverlayClick={false}
@@ -78,5 +85,10 @@ export function ShowResultModal({
 
             </div>
         </Modal>
+        
+            <GameReload 
+                isVisible={modalIsOpenGameReload} 
+            />
+        </>
     )
 }
