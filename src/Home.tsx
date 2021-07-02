@@ -1,18 +1,18 @@
-import { useHistory } from 'react-router-dom';
 import { useAuth } from './components/hooks/useAuth';
 
 import logoImg from './assets/logo.png'
 import styles from './styles/home.module.scss';
 import { useEffect } from 'react';
+import { useHistory } from 'react-router-dom';
 
 
 export function Home(){
     const history = useHistory();
     const { googleSignIn, user } = useAuth();
 
-    useEffect(() => {
-        !!user && history.push('/dashboard')    
-    },[user])
+    useEffect(() => { 
+        user && history.push("/dashboard");        
+    },[user, history])
 
     async function handleLogin(){
         googleSignIn();

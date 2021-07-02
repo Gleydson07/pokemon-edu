@@ -3,6 +3,7 @@ import Modal from 'react-modal';
 import styles from '../../styles/modalGameReload.module.scss';
 
 import { IoReloadOutline } from 'react-icons/io5'
+import { useAuth } from '../hooks/useAuth';
 
 interface IShowResultModalProps{
     isVisible: boolean;
@@ -29,17 +30,26 @@ const customStyles = {
 
 Modal.setAppElement('#root');
 
-export function GameReload({
+export function GameReloadModal({
     isVisible = false,
     userAction = false
 }: IShowResultModalProps){
-    const [modalIsOpen, setModalIsOpen] = useState(false);
+    const { user } = useAuth();
+    const { resetUserPointsAndLife } = useAuth();
+    const [modalIsOpen, setModalIsOpen] = useState(isVisible);
 
     useEffect(() => {
         setModalIsOpen(isVisible);
     }, [isVisible])
 
+    useEffect(() => {}, [user])
+
     function closeModal(){
+        setModalIsOpen(false);
+    }
+
+    function reloadGame(){
+        resetUserPointsAndLife();
         setModalIsOpen(false);
     }
 
@@ -65,7 +75,7 @@ export function GameReload({
                         </span>
                     </>
                 )}
-                <button >                    
+                <button onClick={() => reloadGame()}>                    
                     <IoReloadOutline/>
                 </button>
             </div>

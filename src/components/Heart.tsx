@@ -1,6 +1,7 @@
 
 import { ReactNode, useEffect, useState } from 'react';
 import { AiFillHeart, AiOutlineHeart } from 'react-icons/ai';
+import { MAX_LIFE } from '../assets/consts';
 
 import styles from '../styles/heart.module.scss'
 import { useAuth } from './hooks/useAuth';
@@ -12,7 +13,7 @@ export function Heart() {
     useEffect(() => {
         let count = 0;
         let heartArray = [];
-        while(count < 5){
+        while(count < MAX_LIFE){
             user&& user?.life > count ? (
                 heartArray.push(<AiFillHeart 
                     key={count} 

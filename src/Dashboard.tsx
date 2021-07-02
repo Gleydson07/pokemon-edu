@@ -1,23 +1,24 @@
 import { Suspense, useEffect } from "react";
 
+import { useAuth } from "./components/hooks/useAuth";
+
 import { Card } from "./components/Card";
 import { Header } from "./components/Header";
-
 import { usePokemon } from "./components/hooks/usePokemon";
-import { Pokemon } from "./assets/types";
 
+import { Pokemon } from "./assets/types";
 import styles from './styles/dashboard.module.scss'
-import { useAuth } from "./components/hooks/useAuth";
 import { useHistory } from "react-router-dom";
 
+
 export default function Dashboard() {
+    const history = useHistory();
     const { user } = useAuth();
     const { pokemons } = usePokemon();
-    const history = useHistory();
 
     useEffect(() => {
-        !user && history.push('/');
-    },[user])
+        !user && history.push("/");    
+    },[user, history])
 
     return (
         <div>

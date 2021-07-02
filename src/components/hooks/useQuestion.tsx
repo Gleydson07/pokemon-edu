@@ -10,6 +10,7 @@ interface QuestionContextProps {
     answerCheckedList: QuestionsCheckedListProps[],
     answerChecked: QuestionsCheckedListProps | undefined,
     getQuestionById: (id: number) =>  void,
+    getAnswerListFromUser: () => void,
     checkAnswer: (question:Question, answer: string) => void,
 }
 
@@ -20,7 +21,6 @@ export const QuestionProvider = ({children}: QuestionProviderProps) => {
     const [ question, setQuestion ] = useState<Question>({} as Question);
     const [ answerChecked, setAnswerChecked ] = useState<QuestionsCheckedListProps>();
     const [ answerCheckedList, setAnswerCheckedList ] = useState<QuestionsCheckedListProps[]>([])
-
 
     useEffect(() => {
         getAnswerListFromUser();
@@ -65,6 +65,7 @@ export const QuestionProvider = ({children}: QuestionProviderProps) => {
             answerCheckedList,
             answerChecked,
             getQuestionById,
+            getAnswerListFromUser,
             checkAnswer
         }}>
             {children}

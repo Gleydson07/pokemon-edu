@@ -4,11 +4,11 @@ import { useAuth } from './hooks/useAuth';
 import { useQuestion } from './hooks/useQuestion';
 
 import { QuestionModal } from '../components/modals/QuestionModal';
+import { GameReloadModal } from '../components/modals/GameReloadModal';
 
 import { Pokemon, QuestionsCheckedListProps } from '../assets/types';
 import { RiHeart3Fill, RiSwordFill, RiShieldFill } from 'react-icons/ri'
 import { FcCancel } from 'react-icons/fc'
-import { CgPokemon } from 'react-icons/cg'
 import pokeballImg from '../assets/pokeball.png';
 import bgPokeballImg from '../assets/bgpokeball.png';
 
@@ -20,16 +20,21 @@ type PokemonData = {
 }
 
 export function Card({pokemon}:PokemonData){
-    const { user } = useAuth();
     const { id, name, image, hp, attack, defense } = pokemon;
-    const [ openModalQuestion, setOpenModalQuestion ] = useState(false);
+    const { user } = useAuth();
     const { getQuestionById, question, answerCheckedList } = useQuestion();
+    const [ openModalQuestion, setOpenModalQuestion ] = useState(false);
+    const [modalIsOpenGameReload, setModalIsOpenGameReload] = useState(false);
     const [ answered, setAnswered ] = useState<QuestionsCheckedListProps>();
 
     useEffect(() => {
         const exists = answerCheckedList.find(answer => answer.idPokemon === id)
         setAnswered(exists);
     }, [answerCheckedList])
+
+    useEffect(() => {
+        setTimeout(() => user?.life === 0 && setModalIsOpenGameReload(true), 1500);
+    }, [user])
     
     function handleOpenModalQuestion(){
         getQuestionById(id-1);
@@ -99,6 +104,10 @@ export function Card({pokemon}:PokemonData){
             )}
             
             <QuestionModal isVisible={openModalQuestion} question={question}/>
+
+            <GameReloadModal 
+                isVisible={modalIsOpenGameReload} 
+            />
         </>
     )
 }

@@ -2,7 +2,9 @@ import { createContext, ReactNode, useContext, useEffect, useState } from "react
 import {firebase, auth, database} from '../../services/firebase';
 
 import { User } from "../../assets/types";
-import { useHistory } from "react-router-dom";
+import { useHistory, useLocation } from "react-router-dom";
+import { MAX_LIFE } from "../../assets/consts";
+import { useQuestion } from "./useQuestion";
 
 type AuthProviderProps = {
     children: ReactNode
@@ -11,6 +13,7 @@ type AuthProviderProps = {
 interface AuthContextData {
     user: User | undefined;
     updateGamePointsOfUser: (points: number, isCorrect:boolean) =>  void;
+    resetUserPointsAndLife: () => void;
     googleSignIn: () =>  Promise<void>;
     googleSignOut: () =>  Promise<void>;
 }
@@ -19,6 +22,7 @@ export const AuthContext = createContext({} as AuthContextData);
 
 export const AuthProvider = ({children}: AuthProviderProps) => {
     const [user, setUser] = useState<User>();
+    const location = useLocation();
     const history = useHistory();
 
     useEffect(() => {
@@ -36,27 +40,9 @@ export const AuthProvider = ({children}: AuthProviderProps) => {
         }
     }, [])
 
-    useEffect(() => {}, [user])
-
-    async function updateGamePointsOfUser(points: number, isCorrect:boolean){
-        if(user){
-            if(isCorrect){
-                setUser({...user, points: user.points+points})
-
-                await database.ref(`users/${user?.id}`).update({
-                    points: user.points+points
-                });
-            }else{
-                if(user.life > 0){
-                    setUser({...user, life: user.life-1})
-
-                    await database.ref(`users/${user?.id}`).update({
-                        life: user.life-1
-                    });
-                }
-            }
-        }
-    }
+    useEffect(() => {
+        
+    }, [user])
 
     async function googleSignIn(){
         const provider = new firebase.auth.GoogleAuthProvider();
@@ -69,7 +55,9 @@ export const AuthProvider = ({children}: AuthProviderProps) => {
                 throw new Error("Missing information from Google Account")
             }
 
-            getUser(uid, photoURL, displayName);        
+            getUser(uid, photoURL, displayName);  
+            
+            history.push("/dashboard")
         }
     }
 
@@ -107,10 +95,46 @@ export const AuthProvider = ({children}: AuthProviderProps) => {
                 name,
                 avatar: photoURL,
                 points: 0, 
-                life: 5
+                life: MAX_LIFE
             }
             await database.ref(`users/${uid}`).set(userData);
             setUser(userData);
+        }
+    }
+    
+    async function resetUserPointsAndLife(){
+        if(user){
+            await database.ref(`answers/${user?.id}`).remove();
+            await database.ref(`users/${user?.id}`).update({
+                points: 0,
+                life: MAX_LIFE
+            });
+
+            setUser({
+                ...user, 
+                points: 0,
+                life: MAX_LIFE,
+            })
+        }
+    }
+
+    async function updateGamePointsOfUser(points: number, isCorrect:boolean){
+        if(user){
+            if(isCorrect){
+                setUser({...user, points: user.points+points})
+
+                await database.ref(`users/${user?.id}`).update({
+                    points: user.points+points
+                });
+            }else{
+                if(user.life > 0){
+                    setUser({...user, life: user.life-1})
+
+                    await database.ref(`users/${user?.id}`).update({
+                        life: user.life-1
+                    });
+                }
+            }
         }
     }
 
@@ -118,6 +142,7 @@ export const AuthProvider = ({children}: AuthProviderProps) => {
         <AuthContext.Provider value={{
             user,
             updateGamePointsOfUser,
+            resetUserPointsAndLife,
             googleSignIn,
             googleSignOut
         }}>

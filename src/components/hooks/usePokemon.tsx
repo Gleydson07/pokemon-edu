@@ -1,5 +1,6 @@
 import axios from "axios";
 import { createContext, useContext, useEffect, useState, ReactNode } from "react";
+import { MAX_POKEMONS, MIN_POKEMONS } from "../../assets/consts";
 
 import { Pokemon } from '../../assets/types'
 
@@ -22,8 +23,8 @@ export const PokemonProvider = ({children}:PokemonProvidersProps) => {
 
     async function loadPokemonList(){
         let list = [] as Pokemon[];
-            for(let count = 16; count <= 45; count++){ // 16 - 45
-                await axios.get(`https://pokeapi.co/api/v2/pokemon/${count+1}/`)
+            for(let count = MIN_POKEMONS; count < MAX_POKEMONS; count++){ // 15 - 45 = 30 
+                await axios.get(`https://pokeapi.co/api/v2/pokemon/${count}/`)
                 .then(response => response.data)
                 .then(data => {
                     list.push({                       

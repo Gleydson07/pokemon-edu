@@ -1,12 +1,12 @@
 import { useEffect, useState } from 'react';
 import Modal from 'react-modal';
-import { QuestionsCheckedListProps } from '../../assets/types';
 
+import { useAuth } from '../hooks/useAuth';
+
+import { QuestionsCheckedListProps } from '../../assets/types';
 import winImg from '../../assets/win.png';
 import lossImg from '../../assets/loss.png';
 import styles from '../../styles/modalResult.module.scss';
-import { GameReload } from './GameReload';
-import { useAuth } from '../hooks/useAuth';
 
 interface IShowResultModalProps{
     isVisible: boolean;
@@ -38,24 +38,19 @@ export function ShowResultModal({
     questionChecked,
     points
 }: IShowResultModalProps){
-    const { user } = useAuth();  
     const [modalIsOpen, setModalIsOpen] = useState(false);
-    const [modalIsOpenGameReload, setModalIsOpenGameReload] = useState(false);
 
     useEffect(() => {
         questionChecked && setModalIsOpen(isVisible);
-        setTimeout(() => closeModal(), 1000);
-
-        user?.life === 0 && setModalIsOpenGameReload(true);
-    }, [isVisible, user])
+        setTimeout(() => closeModal(), 1250);
+    }, [isVisible])
 
     function closeModal(){
         setModalIsOpen(false);
     }
 
     return(
-        <>
-            <Modal
+        <Modal
             isOpen={modalIsOpen}
             onRequestClose={closeModal}
             shouldCloseOnOverlayClick={false}
@@ -82,13 +77,7 @@ export function ShowResultModal({
                         <img src={lossImg} alt="Que pena, não foi dessa vez!" />
                     </div>                        
                 )}
-
             </div>
         </Modal>
-        
-            <GameReload 
-                isVisible={modalIsOpenGameReload} 
-            />
-        </>
     )
 }
