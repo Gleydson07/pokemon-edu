@@ -18,7 +18,7 @@
         .statistics{
             display: flex;
             flex-direction: column;
-            min-width: 270px;
+            min-width: 350px;
             width: 100%;
 
             div {
@@ -79,8 +79,8 @@
                     color: #ffe031;
                     font-weight: bold;
                     letter-spacing: 0.125rem;
-                    filter: drop-shadow(0.125rem 0.125rem 0.125rem #00000055);
-                    text-shadow: 1px 0 0 #396bba99, -1px 0 0 #396bba99, 0 1px 0 #396bba99, 0 -1px 0 #396bba99, 1px 1px #396bba99, -1px -1px 0 #396bba99, 1px -1px 0 #396bba99, -1px 1px 0 #396bba99;
+                    filter: drop-shadow(0.25rem 0.25rem 0.25rem #00000055);
+                    // text-shadow: 1px 0 0 #396bba99, -1px 0 0 #396bba99, 0 1px 0 #396bba99, 0 -1px 0 #396bba99, 1px 1px #396bba99, -1px -1px 0 #396bba99, 1px -1px 0 #396bba99, -1px 1px 0 #396bba99;
                     font-size: 1.25rem;
                     margin-right: 1rem;
     

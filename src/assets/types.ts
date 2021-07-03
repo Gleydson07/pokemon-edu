@@ -60,6 +60,6 @@ export type User = {
     name: string;
     avatar: string;
     points: number;
+    maxPoints: number;
     life: number;
-    pokemons?: number[];
 }

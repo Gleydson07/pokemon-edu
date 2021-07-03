@@ -2,9 +2,8 @@ import { createContext, ReactNode, useContext, useEffect, useState } from "react
 import {firebase, auth, database} from '../../services/firebase';
 
 import { User } from "../../assets/types";
-import { useHistory, useLocation } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import { MAX_LIFE } from "../../assets/consts";
-import { useQuestion } from "./useQuestion";
 
 type AuthProviderProps = {
     children: ReactNode
@@ -12,6 +11,7 @@ type AuthProviderProps = {
 
 interface AuthContextData {
     user: User | undefined;
+    rankingOfUsers: User[] | undefined;
     updateGamePointsOfUser: (points: number, isCorrect:boolean) =>  void;
     resetUserPointsAndLife: () => void;
     googleSignIn: () =>  Promise<void>;
@@ -22,7 +22,7 @@ export const AuthContext = createContext({} as AuthContextData);
 
 export const AuthProvider = ({children}: AuthProviderProps) => {
     const [user, setUser] = useState<User>();
-    const location = useLocation();
+    const [rankingOfUsers, setRankingOfUsers] = useState<User[]>();
     const history = useHistory();
 
     useEffect(() => {
@@ -41,7 +41,7 @@ export const AuthProvider = ({children}: AuthProviderProps) => {
     }, [])
 
     useEffect(() => {
-        
+        getRankingOfUsers();
     }, [user])
 
     async function googleSignIn(){
@@ -87,7 +87,8 @@ export const AuthProvider = ({children}: AuthProviderProps) => {
                 name,
                 avatar: photoURL,
                 life:  dataFromFirebase.val().life,
-                points:  dataFromFirebase.val().points
+                points:  dataFromFirebase.val().points,
+                maxPoints: dataFromFirebase.val().maxPoints,
             });
         }else{
             const userData: User = {
@@ -95,11 +96,32 @@ export const AuthProvider = ({children}: AuthProviderProps) => {
                 name,
                 avatar: photoURL,
                 points: 0, 
+                maxPoints: 0, 
                 life: MAX_LIFE
             }
             await database.ref(`users/${uid}`).set(userData);
             setUser(userData);
         }
+    }
+
+    async function getRankingOfUsers(){
+        database.ref(`users`).on('value', (data) => { 
+            const firebaseAnswer:User[] = data.val() || [];
+            const parsedUsers = Object.entries(firebaseAnswer).map(([key, value]) => {
+                return {
+                    id: key,
+                    name: value.name,
+                    avatar: value.avatar,
+                    life:  value.life,
+                    points:  value.points,
+                    maxPoints: value.maxPoints,
+                }
+            })
+            const orderedUsers = parsedUsers.sort((beforeUser, afterUser) => {
+                return afterUser.maxPoints - beforeUser.maxPoints
+            })
+            setRankingOfUsers(orderedUsers);
+        });
     }
     
     async function resetUserPointsAndLife(){
@@ -121,10 +143,17 @@ export const AuthProvider = ({children}: AuthProviderProps) => {
     async function updateGamePointsOfUser(points: number, isCorrect:boolean){
         if(user){
             if(isCorrect){
-                setUser({...user, points: user.points+points})
+                const maxPointsValue = user.points+points > user.maxPoints ? user.points+points : user.maxPoints
+
+                setUser({
+                    ...user, 
+                    points: user.points+points,
+                    maxPoints: maxPointsValue
+                })
 
                 await database.ref(`users/${user?.id}`).update({
-                    points: user.points+points
+                    points: user.points+points,
+                    maxPoints: maxPointsValue
                 });
             }else{
                 if(user.life > 0){
@@ -141,6 +170,7 @@ export const AuthProvider = ({children}: AuthProviderProps) => {
     return (
         <AuthContext.Provider value={{
             user,
+            rankingOfUsers,
             updateGamePointsOfUser,
             resetUserPointsAndLife,
             googleSignIn,
