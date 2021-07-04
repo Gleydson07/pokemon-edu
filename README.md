@@ -1,46 +1,61 @@
-# Getting Started with Create React App
+## 💻 Projeto POKEMON-EDU
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+O Pokemon Education tem como finalidade permitir que crianças possam práticar os ensinamentos adquiridos na escola de maneira lúdica usando a temática do jogo POKEMON.
 
-## Available Scripts
 
-In the project directory, you can run:
+<h2>🖥️ Tela de Login com Google Account: </h2>
+<p align="center">
+  <img alt="Home" src="public/1.png" width="100%">
+</p>
+<h2>🖥️ Dashboard: </h2>
+<p align="center">
+  <img alt="Home" src="public/2.png" width="32%">
+  <img alt="Home" src="public/3.png" width="32%">
+  <img alt="Home" src="public/4.png" width="32%">
+</p>
 
-### `yarn start`
+## ✨ Tecnologias
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+Esse projeto foi desenvolvido com as seguintes tecnologias:
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+- [ReactJS](https://reactjs.org)
+- [TypeScript](https://www.typescriptlang.org/)
+- [SASS](https://sass-lang.com/)
+- [Firebase](https://firebase.google.com/)
 
-### `yarn test`
+## 🚀 Aplicação disponível online
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Você pode testar o Pokemon Education através [desse link](https://pokemon-education.web.app/).
 
-### `yarn build`
+## 🚀 Jogando
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- Existe um total de 24 pokebolas que para serem conquistadas deve ter sue desafio respondido corretamente
+- Cada usuário possui 3 vidas
+  - Para cada resposta errada, perde-se uma vida e a oportunidade de conquistar o pokemon da pokebola selecionada
+- Cada resposta correta resulta na conquista do pokemon e dos ponto, que variam de acordo com a complexidade da questão
+- A pontuação máxima de cada jogador fica salva em seu perfil como pontuação RECORDE
+- Existe um ranking do top 10 Jogadores
+- Caso o jogador queira reiniciar a partida, basta clicar no botão de recarregar ao lado de seu nome
+  - Ao recarregar, o jogador receber suas vidas de volta (3) e seus pontos são igualados a 0.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+- A aplicação está pendente de alguns pequenos ajustes e implementação de questões, atualmente existem apenas as seguintes matérias:
+  - Português
+  - Matemática
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## 🚀 Como executar
 
-### `yarn eject`
+- Clone o repositório
+- Instale o [Node.js](https://nodejs.org/en/download/)
+- Instale o [Yarn](https://classic.yarnpkg.com/en/docs/install/#windows-stable)
+- Crie um projeto no [Firebase](https://firebase.google.com/)
+- Adicione as credenciais do seu firebase em firebase.ts localizado na pasta services
+- Ative o firebase authentication com a autenticação do google
+- Inicie o servidor com `yarn start` no terminal
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+Agora você pode acessar [`localhost:3000`](http://localhost:3000) no seu navegador.
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+---
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+<p>Feito por Gleydson Albuquerque no 6° NLW organizado pela Rocketseat, missão: ReactJS.</p>
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+Me encontre [aqui](https://www.linkedin.com/in/gleydson07/).
