@@ -54,7 +54,7 @@ export function Header(){
                             </div>
                             <div className={styles.footer}>
                                 <span>Pontos: <strong>{user?.points}</strong></span>                                
-                                <span>Record: <strong>{user?.maxPoints}</strong></span>
+                                <span>Recorde: <strong>{user?.maxPoints}</strong></span>
                                 <button onClick={() => resetGame()}>
                                     <IoReloadOutline/>
                                 </button>
