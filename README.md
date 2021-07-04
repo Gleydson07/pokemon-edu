@@ -60,6 +60,6 @@ Agora você pode acessar [`localhost:3000`](http://localhost:3000) no seu navega
 
 ---
 
-<p>Feito por Gleydson Albuquerque de forma independente com o objetivo de prático.</p>
+<p>Feito por Gleydson Albuquerque de forma independente com o objetivo de prática.</p>
 
 Me encontre [aqui](https://www.linkedin.com/in/gleydson07/).
