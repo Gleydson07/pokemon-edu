@@ -1,8 +1,6 @@
 import { useEffect, useState } from 'react';
 import Modal from 'react-modal';
 
-import { useAuth } from '../hooks/useAuth';
-
 import { QuestionsCheckedListProps } from '../../assets/types';
 import winImg from '../../assets/win.png';
 import lossImg from '../../assets/loss.png';

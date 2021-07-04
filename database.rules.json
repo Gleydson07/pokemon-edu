@@ -1,0 +1,16 @@
+{
+  "rules": {
+    "users": {
+      ".read": "auth != null",
+      ".write": "auth != null"
+    },
+    "lessons": {
+      ".read": "auth != null",
+      ".write": false
+    },
+    "answers": {
+      ".read": "auth != null",
+      ".write": "auth != null"
+    }
+  }
+}

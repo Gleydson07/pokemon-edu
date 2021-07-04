@@ -8,7 +8,6 @@ import pikachuImg from '../../assets/pikachu.gif';
 import styles from '../../styles/modal.module.scss';
 import { Question } from '../../assets/types';
 import { useQuestion } from '../hooks/useQuestion';
-import { useAuth } from '../hooks/useAuth';
 
 interface IQuestionModalProps{
     isVisible: boolean;
