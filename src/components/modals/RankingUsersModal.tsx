@@ -21,7 +21,7 @@ const customStyles = {
         bottom: 'auto',
         transform: 'translate(-50%, -50%)',
         width: "500px",
-        height: "700px",
+        height: "750px",
         padding: 0,
     },
 };
