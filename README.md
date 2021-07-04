@@ -38,9 +38,13 @@ Você pode testar o Pokemon Education através [desse link](https://pokemon-educ
 - Caso o jogador queira reiniciar a partida, basta clicar no botão de recarregar ao lado de seu nome
   - Ao recarregar, o jogador receber suas vidas de volta (3) e seus pontos são igualados a 0.
 
+## Aviso
+
 - A aplicação está pendente de alguns pequenos ajustes e implementação de questões, atualmente existem apenas as seguintes matérias:
   - Português
   - Matemática
+
+- Mais adiante deixarei o projeto responsivo
 
 ## 🚀 Como executar
 
