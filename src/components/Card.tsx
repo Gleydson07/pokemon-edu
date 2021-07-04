@@ -30,7 +30,7 @@ export function Card({pokemon}:PokemonData){
     useEffect(() => {
         const exists = answerCheckedList.find(answer => answer.idPokemon === id)
         setAnswered(exists);
-    }, [answerCheckedList])
+    }, [answerCheckedList, id])
 
     useEffect(() => {
         setTimeout(() => user?.life === 0 && setModalIsOpenGameReload(true), 1500);

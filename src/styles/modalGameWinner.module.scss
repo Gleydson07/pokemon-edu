@@ -1,0 +1,69 @@
+.container{
+    position: absolute;
+    width: 100%;
+    height: 100%;  
+
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+
+    background-image: url("../assets/victory.jpg");
+    background-position: left bottom;
+    background-size: cover;
+
+    p, span{
+        color: #fff;
+        text-shadow: 0.25rem 0.25rem 8px #000;
+        font-weight: 600;    
+    }
+
+    p{
+        position: absolute;
+        text-align: center;
+        top: 2rem;
+        font-size: 3rem; 
+        text-shadow: 2px 0 0 #0F0F0F88, -2px 0 0 #0F0F0F88, 0 2px 0 #0F0F0F88, 0 -2px 0 #0F0F0F88, 1px 1px #0F0F0F88, -1px -1px 0 #0F0F0F88, 1px -1px 0 #0F0F0F88, -1px 1px 0 #0F0F0F88;
+    }
+    
+    span{
+        position: absolute;
+        top: 5rem;
+
+        line-height: 2rem;
+        font-size: 1.5rem;
+    }
+
+    .winnerGame{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        width: 100%;
+        height: 100%;
+    
+        button{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            padding: 0.5rem;
+            border-radius: 0.5rem;
+            border: 1px solid #ffd000;
+            
+            cursor: pointer;
+
+            width: 5rem;
+            height: 5rem;
+
+            font-size: 4rem;
+
+            background: #0f0f0f55;
+            color: #fff;
+
+            &+button{
+                margin-left: 5rem;
+            }
+        }
+    }
+}
+

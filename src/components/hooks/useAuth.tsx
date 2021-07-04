@@ -12,6 +12,7 @@ type AuthProviderProps = {
 interface AuthContextData {
     user: User | undefined;
     rankingOfUsers: User[] | undefined;
+    podium: number | undefined;
     updateGamePointsOfUser: (points: number, isCorrect:boolean) =>  void;
     resetUserPointsAndLife: () => void;
     googleSignIn: () =>  Promise<void>;
@@ -21,6 +22,7 @@ interface AuthContextData {
 export const AuthContext = createContext({} as AuthContextData);
 
 export const AuthProvider = ({children}: AuthProviderProps) => {
+    const [ podium, setPodium ] = useState<number>();
     const [user, setUser] = useState<User>();
     const [rankingOfUsers, setRankingOfUsers] = useState<User[]>();
     const history = useHistory();
@@ -120,6 +122,10 @@ export const AuthProvider = ({children}: AuthProviderProps) => {
             const orderedUsers = parsedUsers.sort((beforeUser, afterUser) => {
                 return afterUser.maxPoints - beforeUser.maxPoints
             })
+
+            const userPosition = orderedUsers.findIndex((data) => data.id === user?.id)
+            setPodium(userPosition+1)
+            
             setRankingOfUsers(orderedUsers);
         });
     }
@@ -171,6 +177,7 @@ export const AuthProvider = ({children}: AuthProviderProps) => {
         <AuthContext.Provider value={{
             user,
             rankingOfUsers,
+            podium,
             updateGamePointsOfUser,
             resetUserPointsAndLife,
             googleSignIn,

@@ -94,7 +94,7 @@ export function QuestionModal({isVisible = false, question}: IQuestionModalProps
                             </div>
                         </div>
 
-                        <button type="submit">
+                        <button type="submit" disabled={!answer}>
                             <span>Responder</span>
                             <img src={pikachuImg} alt="Responder" />
                         </button>

@@ -42,7 +42,7 @@ export function GameReloadModal({
         setModalIsOpen(isVisible);
     }, [isVisible])
 
-    useEffect(() => {}, [user])
+    useEffect(() => {setModalIsOpen(false)}, [user])
 
     function closeModal(){
         setModalIsOpen(false);
@@ -75,9 +75,15 @@ export function GameReloadModal({
                         </span>
                     </>
                 )}
-                <button onClick={() => reloadGame()}>                    
-                    <IoReloadOutline/>
-                </button>
+                <div className={styles.gameReload}>
+                    <button onClick={() => reloadGame()}>                    
+                        <IoReloadOutline/>
+                    </button>
+
+                    <button onClick={() => closeModal()}>                    
+                        Não
+                    </button>
+                </div>
             </div>
         </Modal>
     )

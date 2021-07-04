@@ -11,6 +11,10 @@
     grid-template-columns: repeat(6, 1fr);
     gap: 1rem;
     padding: 1rem 0;
+    align-items: center;
+    justify-content: center;
+
+    min-height: 700px;
 }
 
 @media(max-width: 720px){

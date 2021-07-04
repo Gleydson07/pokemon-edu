@@ -73,19 +73,16 @@ export function RankingUsersModal({
                     </thead>
                     <tbody>
                         {rankingOfUsers && rankingOfUsers.map((data, index) => (
-                            <>                           
-                                {index < 10 && (
-                                    <tr key={data.id} 
-                                        className={user?.id === data.id ? styles.myPoints : ''}
-                                    >
-                                        <td className={styles.numbers}>{index+1}</td>
-                                        <td><img src={data.avatar} alt={data.name} /></td>
-                                        <td>{data.name}</td>
-                                        <td className={styles.numbers}>{data.maxPoints}</td>
-                                    </tr>
-                                )}                        
-                            </>
-                        ))}
+                            index < 10 && (  
+                                <tr key={data.id} 
+                                    className={user?.id === data.id ? styles.myPoints : ''}
+                                >
+                                    <td className={styles.numbers}>{index+1}</td>
+                                    <td><img src={data.avatar} alt={data.name} /></td>
+                                    <td>{data.name}</td>
+                                    <td className={styles.numbers}>{data.maxPoints}</td>
+                                </tr>
+                            )))}
                     </tbody>
                 </table>
                 <button onClick={() => closeModal()}>

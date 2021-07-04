@@ -3,34 +3,33 @@ import { useAuth } from '../components/hooks/useAuth';
 
 import { GameReloadModal } from './modals/GameReloadModal';
 import { RankingUsersModal } from './modals/RankingUsersModal';
+import { ExitToGameModal } from './modals/ExitToGameModal';
 
 import { IoReloadOutline } from 'react-icons/io5'
 import { ImExit } from 'react-icons/im'
 import { GiPodium } from 'react-icons/gi'
-import logoImg from '../assets/logo.png'
-import styles from '../styles/header.module.scss';
 import { useEffect, useState } from 'react';
 
+import styles from '../styles/header.module.scss';
+import logoImg from '../assets/logo.png'
+
 export function Header(){
-    const {user, googleSignOut, rankingOfUsers} = useAuth();
+    const {user, rankingOfUsers, podium} = useAuth();
     const [ openModalGameReset, setOpenModalGameReset ] = useState(false);
     const [ openModalRankingUsers, setOpenModalRankingUsers ] = useState(false);
-    const [ podium, setPodium ] = useState<number>();
+    const [ openModalExitToGame, setOpenModalExitToGame ] = useState(false);
 
     useEffect(() => {
-        if(rankingOfUsers){
-            rankingOfUsers.find((data, index) => {
-                if (data.id === user?.id){
-                    setPodium(index+1);
-                }
-            })
-        }
         setOpenModalRankingUsers(false);
         setOpenModalGameReset(false);
     }, [user]);
 
     function openRankingModal(){
         setOpenModalRankingUsers(true);
+    }
+
+    function openExitToGameModal(){
+        setOpenModalExitToGame(true);
     }
 
     function resetGame(){
@@ -49,7 +48,7 @@ export function Header(){
                                     <img src={user?.avatar} alt={user?.name} /> 
                                     <h1>{user?.name}</h1>
                                 </div>
-                                <button onClick={() => googleSignOut()} data-tip="Sair da conta">
+                                <button onClick={() => openExitToGameModal()} data-tip="Sair da conta">
                                     <ImExit/>
                                 </button>
                             </div>
@@ -85,6 +84,8 @@ export function Header(){
             <RankingUsersModal 
                 isVisible={openModalRankingUsers}
             />
+
+            <ExitToGameModal isVisible={openModalExitToGame}/>
         </>
     )
 }

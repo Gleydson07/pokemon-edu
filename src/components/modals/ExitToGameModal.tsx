@@ -1,20 +1,20 @@
 import { useEffect, useState } from 'react';
+import { useAuth } from '../hooks/useAuth';
 import Modal from 'react-modal';
 
-import { IoReloadOutline } from 'react-icons/io5'
 import { ImExit } from 'react-icons/im'
+import { IoReturnUpBackSharp } from 'react-icons/io5'
 
-import { useAuth } from '../hooks/useAuth';
-import styles from '../../styles/modalGameWinner.module.scss';
+import styles from '../../styles/modalGameReload.module.scss';
 
-interface WinGameModalProps{
+interface IExitToGameModalProps{
     isVisible: boolean;
 }
 
 const customStyles = {
     zIndex: 1,
     overlay:{
-        background: "#00000033",
+        background: "#00000011",
     },
     content: {
         top: '50%',
@@ -22,31 +22,28 @@ const customStyles = {
         right: 'auto',
         bottom: 'auto',
         transform: 'translate(-50%, -50%)',
-        width: "600px",
-        height: "400px",
+
+        width: "500px",
+        height: "300px",
         padding: 0,
     },
 };
 
 Modal.setAppElement('#root');
 
-export function WinnerGameModal({
-    isVisible = true
-}: WinGameModalProps){
-    const { resetUserPointsAndLife, googleSignOut } = useAuth();
-    const [modalIsOpen, setModalIsOpen] = useState(false);
+export function ExitToGameModal({
+    isVisible = false
+}: IExitToGameModalProps){
+    const { user, googleSignOut } = useAuth();
+    const [modalIsOpen, setModalIsOpen] = useState(isVisible);
 
     useEffect(() => {
         setModalIsOpen(isVisible);
     }, [isVisible])
 
-    function closeModal(){
-        googleSignOut();
-        setModalIsOpen(false);
-    }
+    useEffect(() => {setModalIsOpen(false)}, [user])
 
-    function reloadGame(){
-        resetUserPointsAndLife();
+    function closeModal(){
         setModalIsOpen(false);
     }
 
@@ -59,12 +56,13 @@ export function WinnerGameModal({
             style={customStyles}
         >
             <div className={styles.container}>
-                <div className={styles.winnerGame}>
-                    <p>Parabéns, você venceu o jogo!!</p>
-                    <button onClick={() => reloadGame()}>                    
-                        <IoReloadOutline/>
+                <p>Deseja realmente sair?</p>
+                <div className={styles.exitModal}>
+                    <button onClick={() => closeModal()}>                    
+                        <IoReturnUpBackSharp/>
                     </button>
-                    <button onClick={() => closeModal()}>
+
+                    <button onClick={() => googleSignOut()}>                    
                         <ImExit/>
                     </button>
                 </div>

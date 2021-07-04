@@ -1,4 +1,5 @@
 import { createContext, ReactNode, useContext, useEffect, useState } from "react";
+import { MAX_POKEMONS, MIN_POKEMONS } from "../../assets/consts";
 import { Option, Question, QuestionsCheckedListProps } from "../../assets/types";
 import { database } from "../../services/firebase";
 import { useAuth } from "./useAuth";
@@ -9,6 +10,7 @@ interface QuestionContextProps {
     question: Question,
     answerCheckedList: QuestionsCheckedListProps[],
     answerChecked: QuestionsCheckedListProps | undefined,
+    isFinishedGame: boolean,
     getQuestionById: (id: number) =>  void,
     getAnswerListFromUser: () => void,
     checkAnswer: (question:Question, answer: string) => void,
@@ -20,10 +22,12 @@ export const QuestionProvider = ({children}: QuestionProviderProps) => {
     const { updateGamePointsOfUser, user } = useAuth();
     const [ question, setQuestion ] = useState<Question>({} as Question);
     const [ answerChecked, setAnswerChecked ] = useState<QuestionsCheckedListProps>();
-    const [ answerCheckedList, setAnswerCheckedList ] = useState<QuestionsCheckedListProps[]>([])
+    const [ answerCheckedList, setAnswerCheckedList ] = useState<QuestionsCheckedListProps[]>([]);    
+    const [ isFinishedGame, setIsFinishedGame ] = useState(false);
 
     useEffect(() => {
         getAnswerListFromUser();
+        checkUserFinishedGame();
     }, [user])
 
     async function getAnswerListFromUser(){
@@ -45,6 +49,11 @@ export const QuestionProvider = ({children}: QuestionProviderProps) => {
         )
     }
 
+    function checkUserFinishedGame(){
+        answerCheckedList.length === (MAX_POKEMONS-MIN_POKEMONS) ?
+        setIsFinishedGame(true) : setIsFinishedGame(false)
+    }
+
     function checkAnswer(question:Question, answer: string){
         if(question){
             const result = question.activities.options.find((element:Option) => element.option === answer);
@@ -64,6 +73,7 @@ export const QuestionProvider = ({children}: QuestionProviderProps) => {
             question,
             answerCheckedList,
             answerChecked,
+            isFinishedGame,
             getQuestionById,
             getAnswerListFromUser,
             checkAnswer
